@@ -23,6 +23,7 @@ If your host is already running X, you can just use that. To do this, be sure to
 ---
 ## Installation:
 - [Docker Compose]
+''
 services:
   retroarch:
     image: retroarch101:latest
@@ -73,7 +74,8 @@ services:
        # Persistent storage for retroarch configs/cores/etc
       - ./retroarch/retroarch/:/home/default/.config/retroarch/
        # The location with games
-      - /mnt/Vault101_2/Games101/:/mnt/Games/:ro
+      - /mnt/Vault101_2/Games101/:/mnt/Games/:ro 
+ ''
 
 ---
 ## TODO:
