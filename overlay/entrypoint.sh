@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 ###
 # File: entrypoint.sh
-# Project: docker-steam-headless
-# File Created: Saturday, 8th January 2022 7:08:46 pm
-# Author: Josh.5 (jsunnex@gmail.com)
-# -----
-# Last Modified: Saturday, 22nd January 2022 8:03:33 pm
-# Modified By: Console and webGui login account (jsunnex@gmail.com)
-###
+# Project: docker-retroarch-headless
 
 set -e
 

@@ -4,11 +4,11 @@
     },
     "apps": [
         {
-            "name": "Steam BigPicture",
+            "name": "RetroArch101",
             "output": "steam.txt",
             "cmd": "",
             "detached": [
-                "\/usr\/games\/steam steam:\/\/open\/bigpicture"
+                "\/usr\/bin\/retroarch"
             ]
         }
     ]

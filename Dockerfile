@@ -1,64 +1,24 @@
-FROM debian:bullseye-slim
-LABEL maintainer="Josh.5 <jsunnex@gmail.com>"
-
-# Update package repos
-ARG DEBIAN_FRONTEND=noninteractive
-RUN \
-    echo "**** Update apt database ****" \
-        && sed -i '/^.*main/ s/$/ contrib non-free/' /etc/apt/sources.list \
-    && \
-    echo
-
-# Update locale
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install and configure locals ****" \
-        && apt-get install -y --no-install-recommends \
-            locales \
-        && echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
-        && locale-gen \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-ENV \
-    LANG=en_US.UTF-8 \
-    LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8
-
-# Re-install certificates
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install certificates ****" \
-        && apt-get install -y --reinstall \
-            ca-certificates \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
+FROM ubuntu:22.10
+LABEL maintainer="QuaiGoner (kr052997@gmail.com"
+RUN DEBIAN_FRONTEND=noninteractive TZ=Asia/Novosibirsk apt-get update && apt-get -y install tzdata keyboard-configuration
 # Install core packages
 RUN \
     echo "**** Update apt database ****" \
         && apt-get update \
     && \
     echo "**** Install tools ****" \
+        && apt-get install -y --no-install-recommends \
+            software-properties-common \
+            apt-utils \
+			gpg-agent \
+			locales \
+        && add-apt-repository ppa:libretro/stable \
+		&& dpkg --add-architecture i386 \
+	    && echo "**** Install and configure locals ****" \
+        && echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
+        && locale-gen \
+    && \
+    echo "**** Install all packages ****" \
         && apt-get install -y --no-install-recommends \
             bash \
             bash-completion \
@@ -80,91 +40,33 @@ RUN \
             vim \
             wget \
             xz-utils \
-    && \
-    echo "**** Install python ****" \
-        && apt-get install -y --no-install-recommends \
             python3 \
             python3-numpy \
             python3-pip \
             python3-setuptools \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Install supervisor
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install supervisor ****" \
-        && apt-get install -y \
-            supervisor \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Install mesa and vulkan requirements
-RUN \
-    echo "**** Update apt database ****" \
-        && dpkg --add-architecture i386 \
-        && apt-get update \
-    && \
-    echo "**** Install mesa requirements ****" \
-        && apt-get install -y --no-install-recommends \
+			nginx \
+			supervisor \
+			retroarch \
+			retroarch-assets \
+			libretro-* \
+#Mesa packages
             libgl1-mesa-dri \
             libgl1-mesa-glx \
             libgles2-mesa \
             libglu1-mesa \
             mesa-utils \
             mesa-utils-extra \
-    && \
-    echo "**** Install vulkan requirements ****" \
-        && apt-get install -y --no-install-recommends \
+			mesa-* \
+#Vulkan packages
             libvulkan1 \
-            libvulkan1:i386 \
             mesa-vulkan-drivers \
-            mesa-vulkan-drivers:i386 \
             vulkan-tools \
-    && \
-    echo "**** Install desktop requirements ****" \
-        && apt-get install -y --no-install-recommends \
+#Desktop dependencies
             libdbus-1-3 \
             libegl1 \
             libgtk-3-0 \
             libgtk2.0-0 \
             libsdl2-2.0-0 \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Install X Server requirements
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install X Server requirements ****" \
-        && apt-get install -y --no-install-recommends \
             avahi-utils \
             dbus-x11 \
             libxcomposite-dev \
@@ -181,226 +83,25 @@ RUN \
             xserver-xorg-video-all \
             xserver-xorg-video-dummy \
             xvfb \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
 # Install audio requirements
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install X Server requirements ****" \
-        && apt-get install -y --no-install-recommends \
             pulseaudio \
             alsa-utils \
             libasound2 \
             libasound2-plugins \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Install openssh server
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install openssh server ****" \
-        && apt-get install -y \
-            openssh-server \
-        && echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Install Neko server
-COPY --from=m1k1o/neko:base /usr/bin/neko /usr/bin/neko
-COPY --from=m1k1o/neko:base /var/www /var/www
-
-# Install noVNC
-ARG NOVNC_VERSION=1.2.0
-RUN \
-    echo "**** Fetch noVNC ****" \
-        && cd /tmp \
-        && wget -O /tmp/novnc.tar.gz https://github.com/novnc/noVNC/archive/v${NOVNC_VERSION}.tar.gz \
-    && \
-    echo "**** Extract noVNC ****" \
-        && cd /tmp \
-        && tar -xvf /tmp/novnc.tar.gz \
-    && \
-    echo "**** Configure noVNC ****" \
-        && cd /tmp/noVNC-${NOVNC_VERSION} \
-        && sed -i 's/credentials: { password: password } });/credentials: { password: password },\n                           wsProtocols: ["'"binary"'"] });/g' app/ui.js \
-        && mkdir -p /opt \
-        && rm -rf /opt/noVNC \
-        && cd /opt \
-        && mv -f /tmp/noVNC-${NOVNC_VERSION} /opt/noVNC \
-        && cd /opt/noVNC \
-        && ln -s vnc.html index.html \
-        && chmod -R 755 /opt/noVNC \
-    && \
-    echo "**** Modify noVNC title ****" \
-        && sed -i '/    document.title =/c\    document.title = "Steam Headless - noVNC";' \
-            /opt/noVNC/app/ui.js \
-    && \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install nginx support ****" \
-        && apt-get install -y \
-            nginx \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /tmp/noVNC* \
-            /tmp/novnc.tar.gz
-
-# Install Websockify
-ARG WEBSOCKETIFY_VERSION=0.10.0
-RUN \
-    echo "**** Fetch Websockify ****" \
-        && cd /tmp \
-        && wget -O /tmp/websockify.tar.gz https://github.com/novnc/websockify/archive/v${WEBSOCKETIFY_VERSION}.tar.gz \
-    && \
-    echo "**** Extract Websockify ****" \
-        && cd /tmp \
-        && tar -xvf /tmp/websockify.tar.gz \
-    && \
-    echo "**** Install Websockify to main ****" \
-        && cd /tmp/websockify-${WEBSOCKETIFY_VERSION} \
-        && python3 ./setup.py install \
-    && \
-    echo "**** Install Websockify to noVNC path ****" \
-        && cd /tmp \
-        && mv -v /tmp/websockify-${WEBSOCKETIFY_VERSION} /opt/noVNC/utils/websockify \
-    && \
-    echo "**** Section cleanup ****" \
-        && rm -rf \
-            /tmp/websockify-* \
-            /tmp/websockify.tar.gz
-
-# Add support for flatpaks
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install flatpak support ****" \
-        && apt-get install -y \
+# Flatpak support
             bridge-utils \
             flatpak \
             libpam-cgfs \
             libvirt0 \
             lxc \
             uidmap \
-    && \
-    echo "**** Configure flatpak ****" \
-        && chmod u+s /usr/bin/bwrap \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Install desktop environment
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install desktop environment ****" \
-        && apt-get install -y \
+# Desktop environment
             xfce4 \
             xfce4-terminal \
-            msttcorefonts \
+#            msttcorefonts \
             fonts-vlgothic \
             gedit \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Install Steam
-RUN \
-    echo "**** Install steam ****" \
-        && dpkg --add-architecture i386 \
-        && apt-get update \
-        && echo steam steam/question select "I AGREE" | debconf-set-selections \
-        && echo steam steam/license note '' | debconf-set-selections \
-        && apt-get install -y \
-        && apt-get install -y \
-            steam \
-            steam-devices \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Install firefox
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install firefox ****" \
-        && apt-get install -y \
-            firefox-esr \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Setup audio streaming deps
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install audio streaming deps ****" \
-        && apt-get install -y --no-install-recommends \
+#Audio support
             bzip2 \
             gstreamer1.0-alsa \
             gstreamer1.0-gl \
@@ -423,30 +124,66 @@ RUN \
             libsdl1.2debian \
             libsndfile1 \
             ucspi-tcp \
+#Media drivers and VAINFO
+            libva2 \
+            vainfo \
+			i965-va-driver-shaders
+# Install NOVNC
+ARG NOVNC_VERSION=1.2.0
+RUN \
+    echo "**** Fetch noVNC ****" \
+        && cd /tmp \
+        && wget -O /tmp/novnc.tar.gz https://github.com/novnc/noVNC/archive/v${NOVNC_VERSION}.tar.gz \
     && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
+    echo "**** Extract noVNC ****" \
+        && cd /tmp \
+        && tar -xvf /tmp/novnc.tar.gz \
     && \
-    echo
-
-# Install sunshine
-ARG SUNSHINE_VERSION=0.11.1
+    echo "**** Configure noVNC ****" \
+        && cd /tmp/noVNC-${NOVNC_VERSION} \
+        && sed -i 's/credentials: { password: password } });/credentials: { password: password },\n                           wsProtocols: ["'"binary"'"] });/g' app/ui.js \
+        && mkdir -p /opt \
+        && rm -rf /opt/noVNC \
+        && cd /opt \
+        && mv -f /tmp/noVNC-${NOVNC_VERSION} /opt/noVNC \
+        && cd /opt/noVNC \
+        && ln -s vnc.html index.html \
+        && chmod -R 755 /opt/noVNC \
+    && \
+    echo "**** Modify noVNC title ****" \
+        && sed -i '/    document.title =/c\    document.title = "RetroArch101 - noVNC";' \
+            /opt/noVNC/app/ui.js
+# Install Websocify
+ARG WEBSOCKETIFY_VERSION=0.10.0
+RUN \
+    echo "**** Fetch Websockify ****" \
+        && cd /tmp \
+        && wget -O /tmp/websockify.tar.gz https://github.com/novnc/websockify/archive/v${WEBSOCKETIFY_VERSION}.tar.gz \
+    && \
+    echo "**** Extract Websockify ****" \
+        && cd /tmp \
+        && tar -xvf /tmp/websockify.tar.gz \
+    && \
+    echo "**** Install Websockify to main ****" \
+        && cd /tmp/websockify-${WEBSOCKETIFY_VERSION} \
+        && python3 ./setup.py install \
+    && \
+    echo "**** Install Websockify to noVNC path ****" \
+        && cd /tmp \
+        && mv -v /tmp/websockify-${WEBSOCKETIFY_VERSION} /opt/noVNC/utils/websockify
+#Install Sunshine
+ARG SUNSHINE_VERSION=0.16.0
 RUN \
     echo "**** Fetch Sunshine deb package ****" \
         && cd /tmp \
-        && wget -O /tmp/sunshine-debian.deb \
-            https://github.com/loki-47-6F-64/sunshine/releases/download/v${SUNSHINE_VERSION}/sunshine-debian.deb \
+        && wget -O /tmp/sunshine-22.04.deb \
+            https://github.com/LizardByte/Sunshine/releases/download/v${SUNSHINE_VERSION}/sunshine-22.04.deb \
     && \
     echo "**** Update apt database ****" \
         && apt-get update \
     && \
     echo "**** Install Sunshine ****" \
-        && apt-get install -y /tmp/sunshine-debian.deb \
+        && apt-get install -y /tmp/sunshine-22.04.deb \
     && \
     echo "**** Section cleanup ****" \
         && apt-get clean autoclean -y \
@@ -454,76 +191,7 @@ RUN \
         && rm -rf \
             /var/lib/apt/lists/* \
             /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Setup video streaming deps
-RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install Intel media drivers and VAAPI ****" \
-        && apt-get install -y --no-install-recommends \
-            intel-media-va-driver-non-free \
-            i965-va-driver-shaders \
-            libva2 \
-            vainfo \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-
-# Setup dind
-# Ref: 
-#   - https://github.com/docker-library/docker/blob/master/20.10/dind/Dockerfile
-#   - https://docs.nvidia.com/ai-enterprise/deployment-guide/dg-docker.html
-ARG DOCKER_VERSION=20.10.18
-ARG DOCKER_COMPOSE_VERSION=v2.11.2
-RUN \
-    echo "**** Fetch Docker static binary package ****" \
-        && cd /tmp \
-        && wget -O /tmp/docker-${DOCKER_VERSION}.tgz \
-            https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz \
-    && \
-    echo "**** Extract static binaries ****" \
-        && mkdir -p /usr/local/bin \
-        && tar --extract \
-            --file /tmp/docker-${DOCKER_VERSION}.tgz \
-            --strip-components 1 \
-            --directory /usr/local/bin/ \
-            --no-same-owner \
-    && \
-    echo "**** Install docker-compose ****" \
-        && wget -O /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-Linux-x86_64" \
-        && chmod +x /usr/local/bin/docker-compose \
-    && \
-    echo "**** Install nvidia runtime ****" \
-        && distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
-        && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | apt-key add - \
-        && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | tee /etc/apt/sources.list.d/nvidia-docker.list \
-        && apt-get update \
-        && apt-get install -y \
-            nvidia-container-toolkit \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/* \
-    && \
-    echo
-VOLUME /var/lib/docker
-
-
+            /tmp/*
 # Configure default user and set env
 ENV \
     PUID=99 \
@@ -532,7 +200,7 @@ ENV \
     USER="default" \
     USER_PASSWORD="password" \
     USER_HOME="/home/default" \
-    TZ="Pacific/Auckland" \
+    TZ="Asia/Novosibirsk" \
     USER_LOCALES="en_US.UTF-8 UTF-8"
 RUN \
     echo "**** Configure default user '${USER}' ****" \
@@ -547,14 +215,14 @@ RUN \
 
 # Add FS overlay
 COPY overlay /
-
+		
 # Set display environment variables
 ENV \
     DISPLAY_CDEPTH="24" \
     DISPLAY_DPI="96" \
     DISPLAY_REFRESH="60" \
-    DISPLAY_SIZEH="900" \
-    DISPLAY_SIZEW="1600" \
+    DISPLAY_SIZEH="720" \
+    DISPLAY_SIZEW="1280" \
     DISPLAY_VIDEO_PORT="DFP" \
     DISPLAY=":55" \
     NVIDIA_DRIVER_CAPABILITIES="all" \
@@ -572,16 +240,12 @@ ENV \
     MODE="primary" \
     WEB_UI_MODE="vnc" \
     ENABLE_VNC_AUDIO="true" \
-    NEKO_PASSWORD=neko \
-    NEKO_PASSWORD_ADMIN=admin \
     ENABLE_SUNSHINE="false" \
     ENABLE_EVDEV_INPUTS="false"
 
 # Configure required ports
 ENV \
-    PORT_SSH="" \
-    PORT_NOVNC_WEB="8083" \
-    NEKO_NAT1TO1=""
+    PORT_NOVNC_WEB="8083"
 
 # Expose the required ports
 EXPOSE 8083
