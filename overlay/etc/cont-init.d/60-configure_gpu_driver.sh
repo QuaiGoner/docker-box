@@ -66,7 +66,7 @@ function install_nvidia_driver {
 function install_amd_gpu_driver {
     echo "AMD OSS drivers already in the image"
     # There is currently nothing to install inside the debian container. This already comes with the vulken drives that are required
-    # if command -v apt-get &> /dev/null; then
+     if command -v apt-get &> /dev/null; then
         # [[ "${APT_UPDATED:-false}" == 'false' ]] && apt-get update && export APT_UPDATED=true
         # apt-get install -y \
 #			/usr/share/amdgpu*
@@ -76,7 +76,7 @@ function install_amd_gpu_driver {
 function install_intel_gpu_driver {
     echo "Intel OSS drivers already in the image"
     # There is currently nothing to install inside the debian container. This already comes with the vulken drives that are required
-    # if command -v apt-get &> /dev/null; then
+     if command -v apt-get &> /dev/null; then
     #     [[ "${APT_UPDATED:-false}" == 'false' ]] && apt-get update && export APT_UPDATED=true
     #     apt-get install -y \
     #         libvulkan1 \
