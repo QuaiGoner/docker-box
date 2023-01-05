@@ -84,14 +84,14 @@ function install_amd_gpu_driver {
             vulkan-radeon \
 			mesa-*
     # There is currently nothing to install inside the debian container. This already comes with the vulken drives that are required
-    elif command -v apt-get &> /dev/null; then
-        [[ "${APT_UPDATED:-false}" == 'false' ]] && apt-get update && export APT_UPDATED=true
-        apt-get install -y \
-            libvulkan1 \
-            libvulkan1:i386 \
-            mesa-vulkan-drivers \
-            mesa-vulkan-drivers:i386 \
-			mesa-*
+    # elif command -v apt-get &> /dev/null; then
+        # [[ "${APT_UPDATED:-false}" == 'false' ]] && apt-get update && export APT_UPDATED=true
+        # apt-get install -y \
+            # libvulkan1 \
+            # libvulkan1:i386 \
+            # mesa-vulkan-drivers \
+            # mesa-vulkan-drivers:i386 \
+			# mesa-*
 #			/usr/share/amdgpu*
     fi
 }
