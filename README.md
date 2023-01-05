@@ -44,8 +44,14 @@ To make retroarch proper fullscreen - just restart retroarch
 - More refactoring
 - HW Acceleration of Sunshine encoding
 - Test 3D HW Acceleration
+	- Vulkan
+	- OpenGL
 - Different images for different GPUs
-- Fix retroarch/ permissions
+	- NVIDIA
+	- AMD
+	- Intel
+- Fix retroarch persistence storage permissions
+- Move GPU driver installation to Dockerfiles
 - Proper version arguments
 	- Retroarch
 	- Sunshine
