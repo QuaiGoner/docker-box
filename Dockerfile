@@ -1,5 +1,5 @@
 FROM ubuntu:22.10
-LABEL maintainer="QuaiGoner (kr052997@gmail.com"
+LABEL maintainer="QuaiGoner (kr052997@gmail.com)"
 RUN DEBIAN_FRONTEND=noninteractive TZ=Asia/Novosibirsk apt-get update && apt-get -y install tzdata keyboard-configuration
 # Install core packages
 RUN \
