@@ -45,7 +45,7 @@ To make retroarch proper fullscreen - just restart retroarch
 	- Add assets to image
 	- Add most-used cores to image
 	- Rendering Retroarch window only (Wayland?)
-- **HW Acceleration of Sunshine encoding**
+- **HW Acceleration of Sunshine encoding** - DONE in sunshine.conf
 - Proper Retroarch initialization and start-up
 	- Fix retroarch persistence storage permissions
 	- Fullscreen without restart
