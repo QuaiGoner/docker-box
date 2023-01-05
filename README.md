@@ -2,10 +2,13 @@
 
 ![](./overlay/usr/share/backgrounds/retroarch.png)
 
+All credits to https://github.com/Steam-Headless/docker-steam-headless
+This project was made for personal-use only
+
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.10 based
 - Added RetroArch (supervized)
-- Migrated to new Sunshine branch (from LizardByte)
+- Migrated to new Sunshine branch (from LizardByte fork)
 - Deleted: SSH/Steam/dind
 
 ### USING HOST X SERVER:
@@ -41,18 +44,21 @@ To make retroarch proper fullscreen - just restart retroarch
 
 ---
 ## TODO:
-- More refactoring
+- More refactoring and plug&play
+	- Proper version RetroArch arguments
+	- Delete unneeded packages
+	- Remove unneeded ENV variables
+	- Quitting retroarch from Moonlight interface
 - HW Acceleration of Sunshine encoding
+- Proper Retroarch initialization and start-up
+	- Fix retroarch persistence storage permissions
+	- Fullscreen without restart
 - Test 3D HW Acceleration
-	- Vulkan
-	- OpenGL
+	- NVIDIA
+	- AMD
+	- Intel
 - Different images for different GPUs
 	- NVIDIA
 	- AMD
 	- Intel
-- Fix retroarch persistence storage permissions
-- Move GPU driver installation to Dockerfiles
-- Proper version arguments
-	- Retroarch
-	- Sunshine
-	- NoVNC
+	- Move GPU driver installation to Dockerfiles

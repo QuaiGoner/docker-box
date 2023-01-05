@@ -5,7 +5,7 @@
     "apps": [
         {
             "name": "RetroArch101",
-            "output": "steam.txt",
+            "output": "retroarch.txt",
             "cmd": "",
             "detached": [
                 "\/usr\/bin\/retroarch"
