@@ -32,8 +32,9 @@ git clone https://github.com/QuaiGoner/docker-retroarch-headless
 cd docker-retroarch-headless
 docker build -t retroarch101 .
 mkdir retroarch
-chmod 777 retroarch/ && chmod -R 777 retroarch/
+sudo chmod 777 retroarch/ && sudo chmod -R 777 retroarch/
 docker image prune -f
+docker compose up -d
 
 
 ```
