@@ -33,6 +33,7 @@ cd docker-retroarch-headless
 docker build -t retroarch101 .
 mkdir retroarch
 chmod 777 retroarch/ && chmod -R 777 retroarch/
+docker image prune -f
 
 
 ```
@@ -61,7 +62,7 @@ chmod 777 retroarch/ && chmod -R 777 retroarch/
        - "retroarch101:127.0.0.1"
      environment:
        - NAME=retroarch101
-       - TZ=***
+       - TZ=Asia/Novosibirsk
        - USER_LOCALES=en_US.UTF-8 UTF-8
        - DISPLAY=:55
        - PUID=1000
@@ -73,8 +74,8 @@ chmod 777 retroarch/ && chmod -R 777 retroarch/
        - ENABLE_VNC_AUDIO=true
        - PORT_NOVNC_WEB=8083
        - ENABLE_SUNSHINE=true
-       - SUNSHINE_USER=***
-       - SUNSHINE_PASS=***
+       - SUNSHINE_USER=user
+       - SUNSHINE_PASS=pass
        - ENABLE_EVDEV_INPUTS=true
        - NVIDIA_DRIVER_CAPABILITIES=all
        - NVIDIA_VISIBLE_DEVICES=all
