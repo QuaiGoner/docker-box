@@ -58,3 +58,6 @@ To make retroarch proper fullscreen - just restart retroarch
 	- AMD
 	- Intel
 	- Move GPU driver installation to Dockerfiles
+## Long-distance TODO:
+- EmulationStation integrated
+- Auto-scanning of /mnt/Games
