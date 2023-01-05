@@ -240,8 +240,8 @@ ENV \
     MODE="primary" \
     WEB_UI_MODE="vnc" \
     ENABLE_VNC_AUDIO="true" \
-    ENABLE_SUNSHINE="false" \
-    ENABLE_EVDEV_INPUTS="false"
+    ENABLE_SUNSHINE="true" \
+    ENABLE_EVDEV_INPUTS="true"
 
 # Configure required ports
 ENV \
