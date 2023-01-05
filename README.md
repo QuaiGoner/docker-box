@@ -31,6 +31,8 @@ If your host is already running X, you can just use that. To do this, be sure to
 git clone https://github.com/QuaiGoner/docker-retroarch-headless
 cd docker-retroarch-headless
 docker build -t retroarch101 .
+mkdir retroarch
+chmod 777 retroarch/ && chmod -R 777 retroarch/
 
 
 ```
@@ -89,7 +91,7 @@ docker build -t retroarch101 .
         # Persistent storage for retroarch configs/cores/etc
        - ./retroarch/retroarch/:/home/default/.config/retroarch/
         # The location with games
-       - /mnt/Vault101_2/Games101/:/mnt/Games/:ro 
+       - /mnt/Games101/:/mnt/Games/:ro 
 
 ```
 
@@ -97,5 +99,9 @@ docker build -t retroarch101 .
 ## TODO:
 - More refactoring
 - HW Acceleration of Sunshine encoding
+- Test 3D HW Acceleration
 - Different images for different GPUs
 - Proper version arguments
+	- Retroarch
+	- Sunshine
+	- NoVNC
