@@ -19,7 +19,7 @@ fi
 # Wait for the X server to start
 wait_for_x
 # Start the retroarch
-retroarch &
+retroarch --fullscreen &
 retroarch_pid=$!
 
 

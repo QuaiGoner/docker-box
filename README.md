@@ -49,6 +49,9 @@ To make retroarch proper fullscreen - just restart retroarch
 	- Delete unneeded packages
 	- Remove unneeded ENV variables
 	- Quitting retroarch from Moonlight interface
+	- Rendering Retroarch window only (Wayland?)
+	- Add assets to image
+	- Add most-used cores to image
 - HW Acceleration of Sunshine encoding
 - Proper Retroarch initialization and start-up
 	- Fix retroarch persistence storage permissions
