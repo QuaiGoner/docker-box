@@ -46,6 +46,7 @@ RUN \
             python3-setuptools \
 			nginx \
 			supervisor \
+#Install Retroarch
 			retroarch \
 			retroarch-assets \
 			libretro-* \

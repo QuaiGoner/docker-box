@@ -30,8 +30,7 @@ If your host is already running X, you can just use that. To do this, be sure to
 
 ```
 git clone https://github.com/QuaiGoner/docker-retroarch-headless
-cd docker-retroarch-headless && docker build -t retroarch101 .
-docker image prune -f
+cd docker-retroarch-headless && docker build -t retroarch101 . && docker image prune -f
 docker compose up -d && sudo chmod 777 retroarch/ && sudo chmod -R 777 retroarch/ && docker compose restart
 
 ```
@@ -42,12 +41,10 @@ To make retroarch proper fullscreen - just restart retroarch
 ## TODO:
 - More refactoring and plug&play
 	- Proper version RetroArch arguments
-	- Delete unneeded packages
-	- Remove unneeded ENV variables
 	- Restarting retroarch from Moonlight interface
-	- Rendering Retroarch window only (Wayland?)
 	- Add assets to image
 	- Add most-used cores to image
+	- Rendering Retroarch window only (Wayland?)
 - **HW Acceleration of Sunshine encoding**
 - Proper Retroarch initialization and start-up
 	- Fix retroarch persistence storage permissions
