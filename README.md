@@ -35,7 +35,7 @@ cd docker-retroarch-headless && docker build -t retroarch101 . && docker image p
 docker compose up -d && sudo chmod 777 retroarch/ && sudo chmod -R 777 retroarch/ && docker compose restart
 
 ```
-I am not good with Unix permissions, so after initial docker image start we make a chmod 777 and restart container for retroarch to be able to work.
+
 To make retroarch proper fullscreen - just restart retroarch
 
 ---
@@ -43,19 +43,15 @@ To make retroarch proper fullscreen - just restart retroarch
 - More refactoring and plug&play
 	- Proper version RetroArch arguments
 	- Restarting retroarch from Moonlight interface
-	- Add assets to image
-	- Add most-used cores to image
-	- Rendering Retroarch window only (Wayland?)
 - **HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing
 - Proper Retroarch initialization and start-up
-	- Fix retroarch persistence storage permissions
 	- Fullscreen without restart
-- Test 3D HW Acceleration
-	- NVIDIA
-	- AMD
-	- Intel
-- Different images for different GPUs?
+- Test 3D HW Acceleration in games
 
 ## Long-distance TODO:
-- EmulationStation integrated
+- EmulationStation integrated?
 - Auto-scanning of /mnt/Games
+- Add assets to image
+- Add most-used cores to image
+- Rendering Retroarch window only (Wayland?)
+- Different images for different GPUs?
