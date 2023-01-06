@@ -7,7 +7,7 @@
             "name": "RetroArch101",
             "output": "retroarch.log",
             "cmd": "retroarch"
-        }
+        },
         {
             "name": "Steam",
             "output": "steam.log",
