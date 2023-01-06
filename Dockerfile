@@ -147,7 +147,7 @@ RUN \
 # Install AMD GPU Drivers
 RUN \
     echo "**** Starting AMD Drivers install ****" \
-        && amdgpu-install -y \
+        && amdgpu-install -y --accept-eula
 # Install Steam
 RUN \
     echo "**** Install steam ****" \
