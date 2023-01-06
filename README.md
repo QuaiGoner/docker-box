@@ -54,4 +54,4 @@ docker compose up -d
 - Auto-scanning of /mnt/Games
 - Add most-used cores & assets to image (probably already in the image just need to fix the paths in RA)
 - Different images for different GPUs?
-- Create virtual application windows dimensions based on the client (Resolution/HDR)
+- Create virtual application windows dimensions based on the client (Resolution/HDR, now its hardcoded)
