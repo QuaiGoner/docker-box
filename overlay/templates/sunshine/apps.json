@@ -8,7 +8,7 @@
             "output": "retroarch.txt",
             "cmd": "retroarch",
             "detached": [
-                ""
+                "\/usr\/bin\/retroarch"
             ]
         }
     ]
