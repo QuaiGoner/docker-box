@@ -7,8 +7,8 @@ This project was made for personal-use only
 
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.10 based
-- Added RetroArch (supervized)
-- Migrated to new Sunshine branch (from LizardByte fork)
+- Added RetroArch via PPA (supervized)
+- Migrated to new Sunshine branch (from https://github.com/LizardByte/Sunshine)
 - Deleted: SSH/Steam/dind
 
 ### USING HOST X SERVER:
@@ -48,7 +48,7 @@ To make retroarch proper fullscreen - just restart retroarch
 - **HW Acceleration of Sunshine encoding** - DONE in sunshine.conf
 - Proper Retroarch initialization and start-up
 	- Fix retroarch persistence storage permissions
-	- Fullscreen without restart
+	- Fullscreen without restart - DONE in moonlight
 - Test 3D HW Acceleration
 	- NVIDIA
 	- AMD
