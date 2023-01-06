@@ -25,18 +25,11 @@ services:
       - PORT_NOVNC_WEB=8083 # NoVNC listening address
       - SUNSHINE_USER=user # Sunshine User in WebUI
       - SUNSHINE_PASS=pass # Sunshine Password in WebUI
- #   env_file: .env
     volumes:
       # Input devices used for mouse and joypad support inside the container.
       - /dev/input/:/dev/input/:ro
-      # The location of your home directory.
+      # The location of your home directory. Persistent storage for RetroArch and Steam
       - ./docker-box/home/:/home/default/:rw
-      # The Xorg socket. This will be shared with other containers so they can access the X server.
-#      - ./docker-box/.X11-unix/:/tmp/.X11-unix/:rw
-      # Pulse audio socket. This will be shared with other containers so they can access the audio sink.
-#      - ./docker-box/pulse/:/tmp/pulse/:rw
-       # Persistent storage for retroarch configs/cores/etc
-#      - ./docker-box/retroarch/:/home/default/.config/retroarch/
        # The location with games
       - /mnt/Vault101_2/Games101/:/mnt/Games/:ro
 
