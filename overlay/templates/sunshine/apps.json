@@ -8,5 +8,12 @@
             "output": "retroarch.log",
             "cmd": "retroarch"
         }
+        {
+            "name": "Steam",
+            "output": "steam.log",
+            "detached": [
+				"\/usr\/games\/steam steam:\/\/open\/bigpicture"
+			]
+        }
     ]
 }

@@ -8,7 +8,7 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.04 based
-- Added RetroArch via PPA (supervized)
+- Added RetroArch via PPA
 - Migrated to new Sunshine branch (from https://github.com/LizardByte/Sunshine)
 - Added all mesa packages
 - Deleted: SSH/Steam/dind
@@ -34,7 +34,7 @@ To make retroarch proper fullscreen - just restart retroarch or download assets 
 ## TODO:
 - More refactoring and plug&play
 	- Proper version RetroArch arguments
-	- Closing and starting retroarch from Moonlight interface
+	- Closing and starting retroarch from Moonlight interface - starting is working, vut not closing
 	- Make image more lightweight with package trimming
 - Proper Retroarch initialization and start-up
 	- Fullscreen without restart
@@ -54,4 +54,4 @@ To make retroarch proper fullscreen - just restart retroarch or download assets 
 - Add most-used cores to image
 - Rendering Retroarch window only (Wayland?)
 - Different images for different GPUs?
-- Add back Steam (for PC gaming)
+- Add back Steam-BigPicture (for PC gaming)
