@@ -135,7 +135,7 @@ RUN \
         && apt-get update \
     && \
     echo "**** Install amdgpu-install ****" \
-        && apt-get install -y /tmp//tmp/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
+        && apt-get install -y /tmp/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
     && \
     echo "**** Section cleanup ****" \
         && apt-get clean autoclean -y \
