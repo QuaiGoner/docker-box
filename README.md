@@ -49,7 +49,7 @@ To make retroarch proper fullscreen - just restart retroarch
 - Proper Retroarch initialization and start-up
 	- Fullscreen without restart
 	- Add assets to image
-- Test 3D HW Acceleration in games
+- **Test 3D HW Acceleration in games**
 
 ## Long-distance TODO:
 - EmulationStation integrated?

@@ -45,6 +45,7 @@ RUN \
             python3-pip \
             python3-setuptools \
 			nginx \
+#Install supervisor
 			supervisor \
 			ffmpeg \
 #Install Retroarch
@@ -85,25 +86,17 @@ RUN \
             xserver-xorg-video-all \
             xserver-xorg-video-dummy \
             xvfb \
+# Desktop environment
+            xfce4 \
+            xfce4-terminal \
+            fonts-vlgothic \
+            gedit \
 # Install audio requirements
             pulseaudio \
             alsa-utils \
             libasound2 \
             libasound2-plugins \
-# Flatpak support
-            bridge-utils \
-            flatpak \
-            libpam-cgfs \
-            libvirt0 \
-            lxc \
-            uidmap \
-# Desktop environment
-            xfce4 \
-            xfce4-terminal \
-#            msttcorefonts \
-            fonts-vlgothic \
-            gedit \
-#Audio support
+#Install audio support
             bzip2 \
             gstreamer1.0-alsa \
             gstreamer1.0-gl \
