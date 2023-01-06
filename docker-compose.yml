@@ -20,12 +20,13 @@ services:
       - NAME=retroarch101 #Hostname
       - TZ=Asia/Novosibirsk #TZ for RetroArch and container
       - DISPLAY=:55 
-      - PUID=1000 #User UID for running a container
-      - PGID=1000 #User GID for running a container
+      - PUID=1000 # User UID for running a container
+      - PGID=1000 # User GID for running a container
       - UMASK=000
-      - PORT_NOVNC_WEB=8083 #NoVNC listening address
-      - SUNSHINE_USER=user #Sunshine User in WebUI
-      - SUNSHINE_PASS=pass #Sunshine User in WebUI
+      - WEB_UI_MODE=vnc # "vnc" for NoVNC, "none" for no debugging
+      - PORT_NOVNC_WEB=8083 # NoVNC listening address
+      - SUNSHINE_USER=user # Sunshine User in WebUI
+      - SUNSHINE_PASS=pass # Sunshine User in WebUI
  #   env_file: .env
     volumes:
       # The location of your home directory.
