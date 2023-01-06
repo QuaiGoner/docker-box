@@ -3,7 +3,8 @@
 ![](./overlay/usr/share/backgrounds/retroarch.png)
 
 All credits to https://github.com/Steam-Headless/docker-steam-headless
-This project was made for personal-use only, but all contributions are welcome via PRs
+This project was made for personal-use only, but all contributions are welcome via PRs.
+The goal is to have single-docker image endpoint for retro and some-modern gaming through Moonlight (https://github.com/moonlight-stream)
 
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.04 based
@@ -11,18 +12,7 @@ This project was made for personal-use only, but all contributions are welcome v
 - Migrated to new Sunshine branch (from https://github.com/LizardByte/Sunshine)
 - Added all mesa packages
 - Deleted: SSH/Steam/dind
-
-### USING HOST X SERVER:
-If your host is already running X, you can just use that. To do this, be sure to configure:
-  - DISPLAY=:0    
-    **(Variable)** - *Configures the sceen to use the primary display. Set this to whatever your host is using*
-  - MODE=secondary    
-    **(Variable)** - *Configures the container to not start an X server of its own*
-  - HOST_DBUS=true    
-    **(Variable)** - *Optional - Configures the container to use the host dbus process*
-  - /run/dbus:/run/dbus:ro    
-    **(Mount)**  - *Optional - Configures the container to use the host dbus process*
-
+- No Host X server support
 
 ---
 ## Installation:
