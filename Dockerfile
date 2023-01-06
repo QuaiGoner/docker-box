@@ -123,6 +123,27 @@ RUN \
             libva2 \
             vainfo \
 			i965-va-driver-shaders
+# Install AMD GPU Drivers installer (not the drivers)
+ARG AMDINSTALLER_VERSION=5.4.50400-1_all
+RUN \
+    echo "**** Fetch Sunshine deb package ****" \
+        && cd /tmp \
+        && wget -O /tmp/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
+			http://repo.radeon.com/amdgpu-install/latest/ubuntu/jammy/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
+    && \
+    echo "**** Update apt database ****" \
+        && apt-get update \
+    && \
+    echo "**** Install Sunshine ****" \
+        && apt-get install -y /tmp//tmp/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
+    && \
+    echo "**** Section cleanup ****" \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/* \
+            /var/tmp/* \
+            /tmp/*
 # Install Steam
 RUN \
     echo "**** Install steam ****" \
