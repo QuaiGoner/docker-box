@@ -34,7 +34,7 @@ To make retroarch proper fullscreen - just restart retroarch or download assets 
 ## TODO:
 - More refactoring and plug&play
 	- Proper version RetroArch arguments
-	- Closing applications from Moonlight - starting is working, but not closing (Why?)
+	- Closing applications from Moonlight - starting is working, but not closing (Why? Same issue here: https://github.com/Steam-Headless/docker-steam-headless/issues/23)
 	- Make image more lightweight with package trimming
 - Proper Retroarch initialization and start-up
 	- Add assets to image
