@@ -32,7 +32,7 @@ If your host is already running X, you can just use that. To do this, be sure to
 ```
 git clone https://github.com/QuaiGoner/docker-retroarch-headless && cd docker-retroarch-headless && docker build -t retroarch101 . && docker image prune -f
 
-#Change /mnt/Games mount point to your likings
+#Change /mnt/Games mount point to your likings in compose file
 
 docker compose up -d
 
@@ -44,16 +44,16 @@ To make retroarch proper fullscreen - just restart retroarch
 ## TODO:
 - More refactoring and plug&play
 	- Proper version RetroArch arguments
-	- Restarting retroarch from Moonlight interface
+	- Closing and starting retroarch from Moonlight interface
 - **HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing
 - Proper Retroarch initialization and start-up
 	- Fullscreen without restart
+	- Add assets to image
 - Test 3D HW Acceleration in games
 
 ## Long-distance TODO:
 - EmulationStation integrated?
 - Auto-scanning of /mnt/Games
-- Add assets to image
 - Add most-used cores to image
 - Rendering Retroarch window only (Wayland?)
 - Different images for different GPUs?
