@@ -123,6 +123,17 @@ RUN \
             libva2 \
             vainfo \
 			i965-va-driver-shaders
+# Install Steam
+RUN \
+    echo "**** Install steam ****" \
+        && dpkg --add-architecture i386 \
+        && apt-get update \
+        && echo steam steam/question select "I AGREE" | debconf-set-selections \
+        && echo steam steam/license note '' | debconf-set-selections \
+        && apt-get install -y \
+        && apt-get install -y \
+            steam \
+            steam-devices
 # Install NOVNC
 ARG NOVNC_VERSION=1.2.0
 RUN \
