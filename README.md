@@ -55,3 +55,4 @@ To make retroarch proper fullscreen - just restart retroarch
 - Add most-used cores to image
 - Rendering Retroarch window only (Wayland?)
 - Different images for different GPUs?
+- Add back Steam (for PC gaming)
