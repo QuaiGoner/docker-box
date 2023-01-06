@@ -1,9 +1,10 @@
 # Gaming in Docker
 
-![](./overlay/usr/share/backgrounds/retroarch!.png)
+![](./overlay/usr/share/backgrounds/docker-box.png)
 
 All credits to https://github.com/Steam-Headless/docker-steam-headless
 This project was made for personal-use only, but all contributions are welcome via PRs.
+
 The goal is to have single-docker image endpoint for retro and some-modern gaming through Moonlight (https://github.com/moonlight-stream)
 
 ## Changes from original project (docker-steam-headless):
@@ -20,7 +21,7 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 - [Cloning and building an image]
 
 ```
-git clone https://github.com/QuaiGoner/docker-retroarch-headless && cd docker-retroarch-headless && docker build -t retroarch101 . && docker image prune -f
+git clone https://github.com/QuaiGoner/docker-box && cd docker-box && docker build -t docker-box . && docker image prune -f
 
 #Change /mnt/Games mount point to your likings in compose file
 

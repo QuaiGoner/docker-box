@@ -1,7 +1,7 @@
 services:
   retroarch:
-    image: retroarch101:latest
-    container_name: retroarch101  
+    image: docker-box:latest
+    container_name: docker-box  
     restart: unless-stopped
     runtime: runc
     ## NOTE: Requires privileged access to host to be able to access the required devices
@@ -13,11 +13,11 @@ services:
         soft: 1024
         hard: 524288
     network_mode: host
-    hostname: retroarch101
+    hostname: docker-box
     extra_hosts:
-      - "retroarch101:127.0.0.1"
+      - "docker-box:127.0.0.1"
     environment:
-      - NAME=retroarch101 #Hostname
+      - NAME=docker-box #Hostname
       - TZ=Asia/Novosibirsk #TZ for RetroArch and container
       - DISPLAY=:55 
       - PUID=1000 # User UID for running a container
@@ -30,15 +30,15 @@ services:
  #   env_file: .env
     volumes:
       # The location of your home directory.
-      - ./retroarch/home/:/home/default/:rw
+      - ./docker-box/home/:/home/default/:rw
       # Input devices used for mouse and joypad support inside the container.
       - /dev/input/:/dev/input/:ro
       # The Xorg socket. This will be shared with other containers so they can access the X server.
-      - ./retroarch/.X11-unix/:/tmp/.X11-unix/:rw
+      - ./docker-box/.X11-unix/:/tmp/.X11-unix/:rw
       # Pulse audio socket. This will be shared with other containers so they can access the audio sink.
-      - ./retroarch/pulse/:/tmp/pulse/:rw
+      - ./docker-box/pulse/:/tmp/pulse/:rw
        # Persistent storage for retroarch configs/cores/etc
-      - ./retroarch/retroarch/:/home/default/.config/retroarch/
+#      - ./docker-box/retroarch/:/home/default/.config/retroarch/
        # The location with games
       - /mnt/Vault101_2/Games101/:/mnt/Games/:ro
 

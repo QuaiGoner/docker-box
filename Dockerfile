@@ -182,7 +182,7 @@ RUN \
         && chmod -R 755 /opt/noVNC \
     && \
     echo "**** Modify noVNC title ****" \
-        && sed -i '/    document.title =/c\    document.title = "RetroArch101 - noVNC";' \
+        && sed -i '/    document.title =/c\    document.title = "docker-box - noVNC";' \
             /opt/noVNC/app/ui.js
 # Install Websocify
 ARG WEBSOCKETIFY_VERSION=0.10.0
