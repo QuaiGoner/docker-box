@@ -30,8 +30,7 @@ If your host is already running X, you can just use that. To do this, be sure to
 - [Cloning and building an image]
 
 ```
-git clone https://github.com/QuaiGoner/docker-retroarch-headless
-cd docker-retroarch-headless && docker build -t retroarch101 . && docker image prune -f
+git clone https://github.com/QuaiGoner/docker-retroarch-headless && cd docker-retroarch-headless && docker build -t retroarch101 . && docker image prune -f
 docker compose up -d
 
 ```
