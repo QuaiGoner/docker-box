@@ -24,7 +24,7 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 ```
 git clone https://github.com/QuaiGoner/docker-box && cd docker-box && docker build -t docker-box . && docker image prune -f
 
-#Change /mnt/Games mount point to your likings in compose file
+#Change /mnt/Games mountpoint to your likings in compose file
 
 docker compose up -d
 
