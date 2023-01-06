@@ -1,6 +1,6 @@
-# Retroarch in Docker Container
+# Gaming in Docker
 
-![](./overlay/usr/share/backgrounds/retroarch.png)
+![](./overlay/usr/share/backgrounds/retroarch!.png)
 
 All credits to https://github.com/Steam-Headless/docker-steam-headless
 This project was made for personal-use only, but all contributions are welcome via PRs.
@@ -42,6 +42,10 @@ docker compose up -d
 	- AMD
 	- NVIDIA
 	- Intel
+- Github workflows
+	- Build and publish latest image
+	- Dockerfile testing
+	- Shell testing
 
 ## Long-distance TODO:
 - **Rendering application window only (Wayland?)**
