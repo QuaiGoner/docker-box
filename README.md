@@ -11,7 +11,7 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 - Added RetroArch via PPA
 - Migrated to new Sunshine branch (from https://github.com/LizardByte/Sunshine)
 - Added all mesa packages
-- Deleted: SSH/Steam/dind
+- Deleted: SSH/dind
 - No Host X server support
 
 ---
@@ -54,4 +54,3 @@ To make retroarch proper fullscreen - just restart retroarch or download assets 
 - Add most-used cores to image
 - Rendering Retroarch window only (Wayland?)
 - Different images for different GPUs?
-- Add back Steam-BigPicture (for PC gaming)
