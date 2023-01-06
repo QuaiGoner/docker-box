@@ -33,7 +33,6 @@ docker compose up -d
 ---
 ## TODO:
 - More refactoring and plug&play
-	- Proper version RetroArch arguments - need to fetch deb package (Where?)
 	- **Closing applications from Moonlight** - starting is working, but not closing (Same issue here: https://github.com/Steam-Headless/docker-steam-headless/issues/23)
 	- Make image more lightweight with package trimming
 - **Test HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing on all GPU vendors
@@ -53,5 +52,5 @@ docker compose up -d
 - **Rendering application window only (Wayland?)**
 - EmulationStation integrated?
 - Auto-scanning of /mnt/Games
-- Add most-used cores to image
+- Add most-used cores & assets to image (probably already in the image just need to fix the paths in RA)
 - Different images for different GPUs?
