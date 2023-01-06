@@ -18,25 +18,23 @@ services:
       - "docker-box:127.0.0.1"
     environment:
       - NAME=docker-box #Hostname
-      - TZ=Asia/Novosibirsk #TZ for RetroArch and container
-      - DISPLAY=:55 
+      - TZ=Asia/Novosibirsk #TZ for container
       - PUID=1000 # User UID for running a container
       - PGID=1000 # User GID for running a container
-      - UMASK=000
-      - WEB_UI_MODE=vnc # "vnc" for NoVNC, "none" for no debugging
+      - WEB_UI_MODE=vnc # "vnc" or "none"
       - PORT_NOVNC_WEB=8083 # NoVNC listening address
       - SUNSHINE_USER=user # Sunshine User in WebUI
-      - SUNSHINE_PASS=pass # Sunshine User in WebUI
+      - SUNSHINE_PASS=pass # Sunshine Password in WebUI
  #   env_file: .env
     volumes:
-      # The location of your home directory.
-      - ./docker-box/home/:/home/default/:rw
       # Input devices used for mouse and joypad support inside the container.
       - /dev/input/:/dev/input/:ro
+      # The location of your home directory.
+      - ./docker-box/home/:/home/default/:rw
       # The Xorg socket. This will be shared with other containers so they can access the X server.
-      - ./docker-box/.X11-unix/:/tmp/.X11-unix/:rw
+#      - ./docker-box/.X11-unix/:/tmp/.X11-unix/:rw
       # Pulse audio socket. This will be shared with other containers so they can access the audio sink.
-      - ./docker-box/pulse/:/tmp/pulse/:rw
+#      - ./docker-box/pulse/:/tmp/pulse/:rw
        # Persistent storage for retroarch configs/cores/etc
 #      - ./docker-box/retroarch/:/home/default/.config/retroarch/
        # The location with games
