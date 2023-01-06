@@ -35,11 +35,18 @@ To make retroarch proper fullscreen - just restart retroarch
 - More refactoring and plug&play
 	- Proper version RetroArch arguments
 	- Closing and starting retroarch from Moonlight interface
-- **HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing
+	- Make image more lightweight with package trimming
 - Proper Retroarch initialization and start-up
 	- Fullscreen without restart
 	- Add assets to image
+- **HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing on all GPU vendors
+	- AMD
+	- NVIDIA
+	- Intel
 - **Test 3D HW Acceleration in games**
+	- AMD
+	- NVIDIA
+	- Intel
 
 ## Long-distance TODO:
 - EmulationStation integrated?
