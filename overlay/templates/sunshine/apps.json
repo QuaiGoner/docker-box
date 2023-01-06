@@ -5,11 +5,14 @@
     "apps": [
         {
             "name": "RetroArch101",
-            "output": "retroarch.txt",
-            "cmd": "retroarch",
-            "detached": [
-                "\/usr\/bin\/retroarch"
-            ]
+            "output": "retroarch.log",
+            "cmd": "\/usr\/bin\/retroarch",
+			"prep-cmd":[
+ 		{
+ 			"do":"echo 'Retroarch Started'",
+ 			"undo":"echo 'Retroarch Closed'"
+ 		}
+						],
         }
-    ]
+			]
 }
