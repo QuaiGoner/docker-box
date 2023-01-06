@@ -126,7 +126,7 @@ RUN \
 # Install AMD GPU Drivers installer (not the drivers)
 ARG AMDINSTALLER_VERSION=5.4.50400-1_all
 RUN \
-    echo "**** Fetch Sunshine deb package ****" \
+    echo "**** Fetch amdgpu-install deb package ****" \
         && cd /tmp \
         && wget -O /tmp/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
 			http://repo.radeon.com/amdgpu-install/latest/ubuntu/jammy/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
@@ -134,7 +134,7 @@ RUN \
     echo "**** Update apt database ****" \
         && apt-get update \
     && \
-    echo "**** Install Sunshine ****" \
+    echo "**** Install amdgpu-install ****" \
         && apt-get install -y /tmp//tmp/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
     && \
     echo "**** Section cleanup ****" \
@@ -144,6 +144,10 @@ RUN \
             /var/lib/apt/lists/* \
             /var/tmp/* \
             /tmp/*
+# Install AMD GPU Drivers
+RUN \
+    echo "**** Starting AMD Drivers install ****" \
+        && amdgpu-install -y \
 # Install Steam
 RUN \
     echo "**** Install steam ****" \
