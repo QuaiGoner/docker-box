@@ -45,13 +45,7 @@ RUN \
             python3-pip \
             python3-setuptools \
 			nginx \
-#Install supervisor
-			supervisor \
 			ffmpeg \
-#Install Retroarch
-			retroarch \
-			retroarch-assets \
-			libretro-* \
 #Mesa packages
             libgl1-mesa-dri \
             libgl1-mesa-glx \
@@ -122,8 +116,14 @@ RUN \
 #Media drivers and VAINFO
             libva2 \
             vainfo \
-			i965-va-driver-shaders
-# Install AMD GPU Drivers installer (not the drivers)
+			i965-va-driver-shaders \
+#Install supervisor
+			supervisor \
+#Install Retroarch
+			retroarch \
+			retroarch-assets \
+			libretro-*
+# Install AMD GPU Drivers
 ARG AMDINSTALLER_VERSION=5.4.50400-1_all
 RUN \
     echo "**** Fetch amdgpu-install deb package ****" \
@@ -134,8 +134,9 @@ RUN \
     echo "**** Update apt database ****" \
         && apt-get update \
     && \
-    echo "**** Install amdgpu-install ****" \
+    echo "**** Install amdgpu-drivers ****" \
         && apt-get install -y /tmp/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
+		&& amdgpu-install -y --accept-eula \
     && \
     echo "**** Section cleanup ****" \
         && apt-get clean autoclean -y \
@@ -144,10 +145,6 @@ RUN \
             /var/lib/apt/lists/* \
             /var/tmp/* \
             /tmp/*
-# Install AMD GPU Drivers
-RUN \
-    echo "**** Starting AMD Drivers install ****" \
-        && amdgpu-install -y --accept-eula
 # Install Steam
 RUN \
     echo "**** Install steam ****" \
