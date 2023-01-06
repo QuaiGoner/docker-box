@@ -6,9 +6,9 @@
         {
             "name": "RetroArch101",
             "output": "retroarch.txt",
-            "cmd": "retroarch --fullscreen",
+            "cmd": "retroarch",
             "detached": [
-                "\/usr\/bin\/retroarch"
+                ""
             ]
         }
     ]
