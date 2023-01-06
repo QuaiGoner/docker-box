@@ -33,12 +33,12 @@ To make retroarch proper fullscreen - just restart retroarch or download assets 
 ---
 ## TODO:
 - More refactoring and plug&play
-	- Proper version RetroArch arguments
+	- Proper version RetroArch arguments - need to fetch deb package (Where?)
 	- Closing applications from Moonlight - starting is working, but not closing (Why? Same issue here: https://github.com/Steam-Headless/docker-steam-headless/issues/23)
 	- Make image more lightweight with package trimming
 - Proper Retroarch initialization and start-up
 	- Add assets to image
-- **HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing on all GPU vendors
+- **Test HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing on all GPU vendors
 	- AMD
 	- NVIDIA
 	- Intel
@@ -51,5 +51,5 @@ To make retroarch proper fullscreen - just restart retroarch or download assets 
 - EmulationStation integrated?
 - Auto-scanning of /mnt/Games
 - Add most-used cores to image
-- Rendering application window only (Wayland?)
+- **Rendering application window only (Wayland?)**
 - Different images for different GPUs?
