@@ -6,7 +6,7 @@
         {
             "name": "RetroArch101",
             "output": "retroarch.log",
-            "cmd": "\/usr\/bin\/retroarch"
+            "cmd": "retroarch"
         }
     ]
 }
