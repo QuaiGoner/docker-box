@@ -3,12 +3,13 @@
 ![](./overlay/usr/share/backgrounds/retroarch.png)
 
 All credits to https://github.com/Steam-Headless/docker-steam-headless
-This project was made for personal-use only
+This project was made for personal-use only, but all contributions are welcome via PRs
 
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.04 based
 - Added RetroArch via PPA (supervized)
 - Migrated to new Sunshine branch (from https://github.com/LizardByte/Sunshine)
+- Added all mesa packages
 - Deleted: SSH/Steam/dind
 
 ### USING HOST X SERVER:
@@ -45,7 +46,7 @@ To make retroarch proper fullscreen - just restart retroarch
 	- Add assets to image
 	- Add most-used cores to image
 	- Rendering Retroarch window only (Wayland?)
-- **HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything
+- **HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing
 - Proper Retroarch initialization and start-up
 	- Fix retroarch persistence storage permissions
 	- Fullscreen without restart
@@ -53,11 +54,8 @@ To make retroarch proper fullscreen - just restart retroarch
 	- NVIDIA
 	- AMD
 	- Intel
-- Different images for different GPUs
-	- NVIDIA
-	- AMD
-	- Intel
-	- Move GPU driver installation to Dockerfiles
+- Different images for different GPUs?
+
 ## Long-distance TODO:
 - EmulationStation integrated
 - Auto-scanning of /mnt/Games
