@@ -28,7 +28,7 @@ docker compose up -d
 
 ```
 
-To make retroarch proper fullscreen - just restart retroarch
+To make retroarch proper fullscreen - just restart retroarch or download assets via Online Updater
 
 ---
 ## TODO:
