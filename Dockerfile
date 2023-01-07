@@ -123,28 +123,6 @@ RUN \
 			retroarch \
 			retroarch-assets \
 			libretro-*
-# Install AMD GPU Drivers
-ARG AMDINSTALLER_VERSION=5.4.50400-1_all
-RUN \
-    echo "**** Fetch amdgpu-install deb package ****" \
-        && cd /tmp \
-        && wget -O /tmp/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
-			http://repo.radeon.com/amdgpu-install/latest/ubuntu/jammy/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
-    && \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install amdgpu-drivers ****" \
-        && apt-get install -y /tmp/amdgpu-install_${AMDINSTALLER_VERSION}.deb \
-		&& amdgpu-install -y --accept-eula \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/*
 # Install Steam
 RUN \
     echo "**** Install steam ****" \
