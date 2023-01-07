@@ -12,9 +12,9 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 - Added RetroArch via PPA
 - Migrated to new Sunshine branch (from https://github.com/LizardByte/Sunshine)
 - Added all mesa packages
+- AMD Driver (amdgpu-install -y) installed
 - Deleted: SSH/dind
 - No Host X server support
-- AMD Driver (amdgpu-install) installed
 
 ---
 ## Installation:

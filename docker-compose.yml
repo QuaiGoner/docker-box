@@ -30,7 +30,9 @@ services:
       - /dev/input/:/dev/input/:ro
       # The location of your home directory. Persistent storage for RetroArch and Steam
       - ./docker-box/home/:/home/default/:rw
-       # The location with games
+      # The location with games
       - /mnt/Vault101_2/Games101/:/mnt/Games/:ro
+      # RA persistent
+      - ./docker-box/retroarch:/home/default/.config/retroarch/
 
       
