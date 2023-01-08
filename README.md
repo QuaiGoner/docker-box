@@ -18,7 +18,7 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 ---
 ## Installation:
 
-- [Cloning and building an image]
+- [Building and starting a container]
 
 ```
 git clone https://github.com/QuaiGoner/docker-box && cd docker-box && docker build -t docker-box . && docker image prune -f
@@ -33,6 +33,7 @@ docker compose up -d
 ## TODO:
 - More refactoring and plug&play
 	- **Closing applications from Moonlight** - starting is working, but not closing (Same issue here: https://github.com/Steam-Headless/docker-steam-headless/issues/23)
+	- Add most-used cores & assets to image (probably already in the image just need to fix the paths in RA)
 	- Make image more lightweight with package trimming
 - **Test HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing on all GPU vendors
 	- AMD
@@ -52,5 +53,4 @@ docker compose up -d
 - Create virtual application windows dimensions based on the client (Resolution/HDR, now its hardcoded in xorg.conf and ENV)
 - EmulationStation integrated?
 - Auto-scanning of /mnt/Games
-- Add most-used cores & assets to image (probably already in the image just need to fix the paths in RA)
 - Different images for different GPUs?
