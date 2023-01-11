@@ -185,7 +185,7 @@ RUN \
         && cd /tmp \
         && mv -v /tmp/websockify-${WEBSOCKETIFY_VERSION} /opt/noVNC/utils/websockify
 #Install Sunshine
-ARG SUNSHINE_VERSION=0.16.0
+ARG SUNSHINE_VERSION=0.17.0
 RUN \
     echo "**** Fetch Sunshine deb package ****" \
         && cd /tmp \
