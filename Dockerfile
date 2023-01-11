@@ -126,6 +126,7 @@ RUN \
 #Install RPCS3
 RUN \
     echo "**** Install RPCS# ****" \
+        && mkdir /opt/rpcs3 \
         && cd /opt/rpcs3 \
         && wget -O rpcs3.AppImage https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-6809d84a0029377eab059a51ce38f440e325be1c/rpcs3-v0.0.26-14564-6809d84a_linux64.AppImage \
         && chmod +x /opt/rpcs3/rpcs3-v0.0.26-14564-6809d84a_linux64.AppImage
