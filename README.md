@@ -32,8 +32,8 @@ docker compose up -d
 ---
 ## TODO:
 - More refactoring and plug&play
-	- **Closing applications from Moonlight with retaining session** - starting is working, but not closing (Same issue here: https://github.com/Steam-Headless/docker-steam-headless/issues/23)
-	- Resolve High CPU Usage (i guess because of a dummy xorg driver. Probably will be fixed with Wayland)
+	- **Need Help:** **Closing applications from Moonlight with retaining session** - starting is working, but not closing (Same issue here: https://github.com/Steam-Headless/docker-steam-headless/issues/23)
+	- **Need Help:** Resolve High CPU Usage (i guess because of a dummy xorg driver. Probably will be fixed with Wayland)
 	- Add most-used cores & assets to image (probably already in the image just need to fix the paths in RA)
 	- Make image more lightweight with package trimming
 - Add More Emulators
