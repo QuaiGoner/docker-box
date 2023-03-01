@@ -25,6 +25,9 @@ services:
       - PORT_NOVNC_WEB=8083 # NoVNC listening address
       - SUNSHINE_USER=user # Sunshine User in WebUI
       - SUNSHINE_PASS=pass # Sunshine Password in WebUI
+    devices:
+      # VAAPI Devices
+      - /dev/dri:/dev/dri
     volumes:
       # Input devices used for mouse and joypad support inside the container.
       - /dev/input/:/dev/input/:ro
@@ -32,7 +35,5 @@ services:
       - ./docker-box/home/:/home/default/:rw
       # The location with games
       - /mnt/Vault101_2/Games101/:/mnt/Games/:ro
-      # RA persistent
-      - ./docker-box/retroarch:/home/default/.config/retroarch/
 
       

@@ -14,6 +14,13 @@
             "detached": [
 				"\/usr\/games\/steam steam:\/\/open\/bigpicture"
 			]
+        },
+        {
+            "name": "RPCS3",
+            "output": "rpcs3.log",
+            "detached": [
+				"\/opt\/rpcs3\/rpcs3.AppImage"
+			]
         }
     ]
 }

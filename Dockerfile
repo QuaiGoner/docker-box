@@ -4,9 +4,9 @@ RUN DEBIAN_FRONTEND=noninteractive TZ=Asia/Novosibirsk apt-get update && apt-get
 # Install core packages
 RUN \
     echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install tools ****" \
+        && apt-get update
+RUN \
+    echo "**** Install tools and repos ****" \
         && apt-get install -y --no-install-recommends \
             software-properties-common \
             apt-utils \
@@ -16,9 +16,9 @@ RUN \
 		&& dpkg --add-architecture i386 \
 	    && echo "**** Install and configure locals ****" \
         && echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
-        && locale-gen \
-    && \
-    echo "**** Install all packages ****" \
+        && locale-gen
+RUN \
+    echo "**** Install all required (mesa/vulkan/desktop/audio/drivers) packages ****" \
         && apt-get install -y --no-install-recommends \
             bash \
             bash-completion \
@@ -118,14 +118,22 @@ RUN \
             vainfo \
 			i965-va-driver-shaders \
 #Install supervisor
-			supervisor \
+			supervisor
 #Install Retroarch
+RUN \
+    echo "**** Install Retroarch ****" \
+        && apt-get update \
+        && apt-get install -y \
+			libusb-1.0-0 \
+			libglu1-mesa \
+			libaio1 \
+			libaio-dev \
 			retroarch \
 			retroarch-assets \
 			libretro-*
 #Install RPCS3
 RUN \
-    echo "**** Install RPCS# ****" \
+    echo "**** Install RPCS3 ****" \
         && mkdir /opt/rpcs3 \
         && cd /opt/rpcs3 \
         && wget -O rpcs3.AppImage https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-6809d84a0029377eab059a51ce38f440e325be1c/rpcs3-v0.0.26-14564-6809d84a_linux64.AppImage \
@@ -186,12 +194,12 @@ RUN \
         && cd /tmp \
         && mv -v /tmp/websockify-${WEBSOCKETIFY_VERSION} /opt/noVNC/utils/websockify
 #Install Sunshine
-ARG SUNSHINE_VERSION=0.17.0
+ARG SUNSHINE_VERSION=0.18.4
 RUN \
     echo "**** Fetch Sunshine deb package ****" \
         && cd /tmp \
         && wget -O /tmp/sunshine-22.04.deb \
-            https://github.com/LizardByte/Sunshine/releases/download/v${SUNSHINE_VERSION}/sunshine-22.04.deb \
+		    https://github.com/LizardByte/Sunshine/releases/download/v${SUNSHINE_VERSION}/sunshine-ubuntu-22.04-amd64.deb \
     && \
     echo "**** Update apt database ****" \
         && apt-get update \
@@ -235,8 +243,8 @@ ENV \
     DISPLAY_CDEPTH="24" \
     DISPLAY_DPI="96" \
     DISPLAY_REFRESH="60" \
-    DISPLAY_SIZEH="480" \
-    DISPLAY_SIZEW="854" \
+    DISPLAY_SIZEH="1080" \
+    DISPLAY_SIZEW="1920" \
     DISPLAY_VIDEO_PORT="DFP" \
     DISPLAY=":55" \
     NVIDIA_DRIVER_CAPABILITIES="all" \
