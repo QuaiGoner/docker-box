@@ -33,16 +33,9 @@ docker compose up -d
 ## TODO:
 - More refactoring and plug&play
 	- **Closing applications from Moonlight** - starting is working, but not closing (Same issue here: https://github.com/Steam-Headless/docker-steam-headless/issues/23)
+	- Resolve High CPU Usage (i guess because of a dummy xorg driver. Probably will be fixed with Wayland)
 	- Add most-used cores & assets to image (probably already in the image just need to fix the paths in RA)
 	- Make image more lightweight with package trimming
-- **Test HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing on all GPU vendors
-	- AMD
-	- NVIDIA
-	- Intel
-- **Test 3D HW Acceleration in games**
-	- AMD
-	- NVIDIA
-	- Intel
 - Github workflows
 	- Build and publish latest image
 	- Dockerfile testing
@@ -54,3 +47,11 @@ docker compose up -d
 - EmulationStation integrated?
 - Auto-scanning of /mnt/Games
 - Different images for different GPUs?
+- **Test HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing on all GPU vendors
+	- AMD
+	- NVIDIA
+	- Intel
+- **Test 3D HW Acceleration in games**
+	- AMD
+	- NVIDIA
+	- Intel
