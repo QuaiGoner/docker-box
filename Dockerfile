@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 LABEL maintainer="QuaiGoner (kr052997@gmail.com)"
-RUN DEBIAN_FRONTEND=noninteractive TZ=Asia/Novosibirsk apt-get update && apt-get -y install tzdata keyboard-configuration
+RUN DEBIAN_FRONTEND=noninteractive TZ=Europe/London apt-get update && apt-get -y install tzdata keyboard-configuration
 # Install core packages
 RUN \
     echo "**** Update apt database ****" \
@@ -46,7 +46,7 @@ RUN \
             python3-setuptools \
 			nginx \
 			ffmpeg \
-#Mesa packages
+# Mesa packages
             libgl1-mesa-dri \
             libgl1-mesa-glx \
             libgles2-mesa \
@@ -54,11 +54,11 @@ RUN \
             mesa-utils \
             mesa-utils-extra \
 			mesa-* \
-#Vulkan packages
+# Vulkan packages
             libvulkan1 \
             mesa-vulkan-drivers \
             vulkan-tools \
-#Desktop dependencies
+# Desktop dependencies
             libdbus-1-3 \
             libegl1 \
             libgtk-3-0 \
@@ -90,7 +90,7 @@ RUN \
             alsa-utils \
             libasound2 \
             libasound2-plugins \
-#Install audio support
+# Install audio support
             bzip2 \
             gstreamer1.0-alsa \
             gstreamer1.0-gl \
@@ -113,13 +113,13 @@ RUN \
             libsdl1.2debian \
             libsndfile1 \
             ucspi-tcp \
-#Media drivers and VAINFO
+# Media drivers and VAINFO
             libva2 \
             vainfo \
 			i965-va-driver-shaders \
-#Install supervisor
+# Install supervisor
 			supervisor
-#Install Retroarch
+# Install Retroarch
 RUN \
     echo "**** Install Retroarch ****" \
         && apt-get update \
@@ -131,7 +131,7 @@ RUN \
 			retroarch \
 			retroarch-assets \
 			libretro-*
-#Install RPCS3
+# Install RPCS3
 RUN \
     echo "**** Install RPCS3 ****" \
         && mkdir /opt/rpcs3 \
@@ -193,7 +193,7 @@ RUN \
     echo "**** Install Websockify to noVNC path ****" \
         && cd /tmp \
         && mv -v /tmp/websockify-${WEBSOCKETIFY_VERSION} /opt/noVNC/utils/websockify
-#Install Sunshine
+# Install Sunshine
 ARG SUNSHINE_VERSION=0.18.4
 RUN \
     echo "**** Fetch Sunshine deb package ****" \
