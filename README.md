@@ -48,10 +48,6 @@ docker compose up -d
 
 ## Long-distance TODO:
 - **Rendering application window only (Wayland?)**
-- EmulationStation integrated?
-- Auto-scanning of /mnt/Games
-- Create virtual application windows dimensions based on the client (Resolution/HDR, now its hardcoded in xorg.conf and ENV) or in docker-compose
-- Different images for different GPUs?
 - **Test HW Acceleration of Sunshine encoding** - seems to be working, but vainfo doesnt give anything, needs proper testing on all GPU vendors
 	- AMD
 	- NVIDIA
@@ -61,4 +57,9 @@ docker compose up -d
 	- NVIDIA
 	- Intel
 - Make image more lightweight with package trimming
+- EmulationStation integrated?
+- Auto-scanning of /mnt/Games
+- Create virtual application windows dimensions based on the client (Resolution/HDR, now its hardcoded in xorg.conf and ENV) or in docker-compose
+- Different images for different GPUs?
+
 - **Multi-tenant**
