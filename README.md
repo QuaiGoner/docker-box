@@ -5,7 +5,7 @@
 All credits to https://github.com/Steam-Headless/docker-steam-headless
 This project was made for personal-use only, but all contributions are welcome via PRs.
 
-The goal is to have single-docker image endpoint for retro and some-modern gaming through Moonlight (https://github.com/moonlight-stream) with no multi-client support.
+The goal is to have single-docker image endpoint for retro and some-modern gaming through Moonlight (https://github.com/moonlight-stream) with (maybe) multi-client support.
 
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.04 based
