@@ -19,7 +19,7 @@ ENV \
 # Install core packages
 RUN \
     echo "**** Install tools and configure process ****" \
-       && apt-get update \
+        && apt-get update \
         && apt-get install -y --no-install-recommends \
             software-properties-common \
             apt-utils \
@@ -37,6 +37,7 @@ RUN \
             /tmp/*
 RUN \
     echo "**** Install all required (mesa/vulkan/desktop/audio/drivers/fuse) packages ****" \
+        && apt-get update \
         && apt-get install -y --no-install-recommends \
             bash \
             bash-completion \
@@ -139,9 +140,13 @@ RUN \
             vainfo \
 			i965-va-driver-shaders \
 # Install supervisor
-			supervisor
-
-### EMULATORS SECTION
+			supervisor \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/* \
+            /var/tmp/* \
+            /tmp/*
 			
 # Install EmulationStaion_DE
 RUN \
@@ -210,8 +215,6 @@ RUN \
 			wine-stable \
 			lutris \
 			winetricks
-
-### EMULATORS SECTION END
 
 # Install NOVNC
 ARG NOVNC_VERSION=1.2.0
