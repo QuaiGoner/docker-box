@@ -39,10 +39,11 @@ docker compose up -d
 	- **Need Help:** **Closing applications from Moonlight with retaining session** - starting is working, but not closing. Also when pausing session in moonligt - app gets killed (Simillar issue here: https://github.com/Steam-Headless/docker-steam-headless/issues/23)
 	- **Need Help:** Resolve High CPU Usage (i guess because of a dummy xorg driver. Probably will be fixed with Wayland)
 	- Add most-used cores & assets to image (probably already in the image just need to fix the paths in RA)
+	- Autostart EmulationStation
 - Add More Emulators
 	- Wine/Lutris for Windows Games
-	- YUZU
 	- Xenia
+	- fix RPCS3 AppImage (or all appimages)
 - Github workflows
 	- Build and publish latest image
 	- Dockerfile testing
