@@ -18,11 +18,12 @@ echo  "Copy pre-installed cores from the retroarch ppa"
 mkdir -p /home/${USER}/.config/retroarch/cores/
 cp -u /usr/lib/$(uname -m)-linux-gnu/libretro/* "/home/${USER}/.config/retroarch/cores/"
 
-echo  "if there are no assets, manually download them"
- if [ ! -d "/home/${USER}/.config/retroarch/assets" ]; then
-     wget -q -P /tmp https://buildbot.libretro.com/assets/frontend/assets.zip
-	 echo "extracting assets"
-	 unzip /tmp/assets.zip -d /home/default/.config/retroarch/assets
-     rm /tmp/assets.zip
- fi
+echo  "Manually download assets"
+# if [ ! -d "/home/${USER}/.config/retroarch/assets" ]; then
+wget -q -P /tmp https://buildbot.libretro.com/assets/frontend/assets.zip
+echo "extracting assets"
+unzip /tmp/assets.zip -d /home/default/.config/retroarch/assets
+rm /tmp/assets.zip
+# fi
+
 echo "DONE"
