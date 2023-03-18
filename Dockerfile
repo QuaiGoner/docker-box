@@ -168,7 +168,7 @@ RUN \
 			libaio-dev \
 			retroarch \
 			retroarch-assets \
-			libretro-* \
+			libretro-*
 RUN \
     echo "**** Configure Retroarch ****" \
         && mkdir -p /home/${USER}/.config/retroarch/assets \
