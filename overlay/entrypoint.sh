@@ -35,5 +35,4 @@ echo "Logging all user services to '/home/${USER}/.cache/log/'"
 echo
 mkdir -p /var/log/supervisor
 chmod a+rw /var/log/supervisor
-exec /usr/bin/emulationstation
 exec /usr/bin/supervisord -c /etc/supervisord.conf --nodaemon --user root
