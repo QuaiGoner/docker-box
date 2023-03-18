@@ -146,6 +146,8 @@ RUN \
             /var/lib/apt/lists/* \
             /var/tmp/* \
             /tmp/*
+
+### EMULATORS SECTION
 			
 # Install EmulationStaion_DE
 RUN \
@@ -220,6 +222,8 @@ RUN \
 			wine-stable \
 			lutris \
 			winetricks
+
+### EMULATORS SECTION END
 
 # Install NOVNC
 ARG NOVNC_VERSION=1.2.0
