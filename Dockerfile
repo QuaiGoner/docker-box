@@ -139,13 +139,7 @@ RUN \
             vainfo \
 			i965-va-driver-shaders \
 # Install supervisor
-			supervisor \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/*
+			supervisor
 
 ### EMULATORS SECTION
 			
@@ -169,12 +163,6 @@ RUN \
 			retroarch \
 			retroarch-assets \
 			libretro-* \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/tmp/* \
-            /tmp/*
 RUN \
     echo "**** Configure Retroarch ****" \
         && mkdir -p /home/${USER}/.config/retroarch/assets \
