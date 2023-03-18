@@ -20,7 +20,7 @@ cp -u /usr/lib/$(uname -m)-linux-gnu/libretro/* "/home/${USER}/.config/retroarch
 
 echo  "if there are no assets, manually download them"
  if [ ! -d "/home/${USER}/.config/retroarch/assets" ]; then
-     wget -q --show-progress -P /tmp https://buildbot.libretro.com/assets/frontend/assets.zip
+     wget -q -P /tmp https://buildbot.libretro.com/assets/frontend/assets.zip
      7z x /tmp/assets.zip -bso0 -bse0 -bsp1 -o"/home/${USER}/.config/retroarch/assets"
      rm /tmp/assets.zip
  fi
