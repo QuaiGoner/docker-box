@@ -126,6 +126,19 @@ RUN \
     echo "**** Install ESDE ****" \
         && wget -O /tmp/esde.deb https://gitlab.com/es-de/emulationstation-de/-/package_files/71412450/download \
         && apt install -y /tmp/esde.deb
+
+# Install Retroarch
+RUN \
+    echo "**** Install Retroarch ****" \
+        && apt-get update \
+        && apt-get install -y \
+			libusb-1.0-0 \
+			libglu1-mesa \
+			libaio1 \
+			libaio-dev \
+			retroarch \
+			retroarch-assets \
+			libretro-*
 		
 # Install PCSX2
 RUN add-apt-repository -y ppa:pcsx2-team/pcsx2-daily && \
@@ -144,19 +157,7 @@ RUN \
         cd /home/default/Applications && \
         wget -O rpcs3-emu.AppImage https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-6809d84a0029377eab059a51ce38f440e325be1c/rpcs3-v0.0.26-14564-6809d84a_linux64.AppImage && \
         chmod +x /home/default/Applications/rpcs3-emu.AppImage		
-		
-# Install Retroarch
-RUN \
-    echo "**** Install Retroarch ****" \
-        && apt-get update \
-        && apt-get install -y \
-			libusb-1.0-0 \
-			libglu1-mesa \
-			libaio1 \
-			libaio-dev \
-			retroarch \
-			retroarch-assets \
-			libretro-*
+
 # Install NOVNC
 ARG NOVNC_VERSION=1.2.0
 RUN \
