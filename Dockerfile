@@ -1,6 +1,18 @@
 FROM ubuntu:22.04
 LABEL maintainer="QuaiGoner (kr052997@gmail.com)"
 RUN DEBIAN_FRONTEND=noninteractive TZ=Europe/London apt-get update && apt-get -y install tzdata keyboard-configuration
+# Add FS overlay
+COPY overlay /
+# Configure default user and set env
+ENV \
+    PUID=99 \
+    PGID=100 \
+    UMASK=000 \
+    USER="default" \
+    USER_PASSWORD="password" \
+    USER_HOME="/home/default" \
+    TZ="Asia/Novosibirsk" \
+    USER_LOCALES="en_US.UTF-8 UTF-8"
 # Install core packages
 RUN \
     echo "**** Update apt database ****" \
@@ -140,7 +152,17 @@ RUN \
 			libaio-dev \
 			retroarch \
 			retroarch-assets \
-			libretro-*
+			libretro-* \
+    echo "**** Configure Retroarch ****" \
+        && mkdir -p /home/${USER}/.config/retroarch/assets \
+        && chmod -R a+rw /home/${USER}/.config/retroarch/ \
+        && chown -R ${PUID}:${PGID} /home/${USER}/.config/retroarch/ \
+        && cp -vf /templates/retroarch/* /home/${USER}/.config/retroarch/ \
+        && mkdir -p /home/${USER}/.config/retroarch/cores/ \
+        && cp -u /usr/lib/$(uname -m)-linux-gnu/libretro/* "/home/${USER}/.config/retroarch/cores/" \
+        && wget -q -P /tmp https://buildbot.libretro.com/assets/frontend/assets.zip \
+        && unzip /tmp/assets.zip -d /home/default/.config/retroarch/assets \
+        && rm /tmp/assets.zip
 		
 # Install PCSX2
 RUN add-apt-repository -y ppa:pcsx2-team/pcsx2-daily && \
@@ -167,7 +189,17 @@ RUN \
         cd /home/default/Applications && \
         wget -O yuzu-emu.AppImage https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-1373/yuzu-mainline-20230315-6d76a54d3.AppImage && \
         chmod +x /home/default/Applications/yuzu-emu.AppImage		
-		
+
+#Install Lutris/Wine
+RUN \
+    echo "**** Install Lutris/Wine ****" \
+		&& add-apt-repository -y ppa:lutris-team/lutris \
+		&& apt-get update \
+        && apt-get install -y \
+			wine-stable \
+			lutris \
+			winetricks
+
 # Install NOVNC
 ARG NOVNC_VERSION=1.2.0
 RUN \
@@ -232,16 +264,6 @@ RUN \
             /var/lib/apt/lists/* \
             /var/tmp/* \
             /tmp/*
-# Configure default user and set env
-ENV \
-    PUID=99 \
-    PGID=100 \
-    UMASK=000 \
-    USER="default" \
-    USER_PASSWORD="password" \
-    USER_HOME="/home/default" \
-    TZ="Asia/Novosibirsk" \
-    USER_LOCALES="en_US.UTF-8 UTF-8"
 RUN \
     echo "**** Configure default user '${USER}' ****" \
         && mkdir -p \
@@ -252,9 +274,6 @@ RUN \
         && echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
     && \
     echo
-
-# Add FS overlay
-COPY overlay /
 		
 # Set display environment variables
 ENV \
