@@ -7,7 +7,7 @@ echo "***Configure Retroarch****"
 #chmod +x /usr/bin/start-retroarch.sh
 
 echo "Ensure proper Retroarch folder permissions"
-mkdir -p /home/${USER}/.config/retroarch/
+mkdir -p /home/${USER}/.config/retroarch/assets
 chmod -R a+rw /home/${USER}/.config/retroarch/
 chown -R ${PUID}:${PGID} /home/${USER}/.config/retroarch/
 
