@@ -31,9 +31,9 @@ services:
     volumes:
       # Input devices used for mouse and joypad support inside the container.
       - /dev/input/:/dev/input/:ro
-      # The location of your home directory. Persistent storage for RetroArch and Steam
-      - ./docker-box/home/:/home/default/:rw
+      # Persistence
+      - ./docker-box/:/home/default/
       # The location with games
-      - /mnt/Vault101_2/Games101/:/mnt/Games/:ro
+      - /mnt/Vault101_2/Games101/:/home/default/ROMs/:ro
 
       

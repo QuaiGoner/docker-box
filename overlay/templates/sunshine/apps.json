@@ -4,23 +4,9 @@
     },
     "apps": [
         {
-            "name": "RetroArch101",
-            "output": "retroarch.log",
-            "cmd": "retroarch"
-        },
-        {
-            "name": "Steam",
-            "output": "steam.log",
-            "detached": [
-				"\/usr\/games\/steam steam:\/\/open\/bigpicture"
-			]
-        },
-        {
-            "name": "RPCS3",
-            "output": "rpcs3.log",
-            "detached": [
-				"\/opt\/rpcs3\/rpcs3.AppImage"
-			]
+            "name": "EmulationStation",
+            "output": "esde.log",
+            "cmd": "emulationstation"
         }
     ]
 }

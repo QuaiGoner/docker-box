@@ -9,7 +9,11 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.04 based
+- Added EmulationStation-DE (from https://gitlab.com/es-de/emulationstation-de)
 - Added RetroArch via PPA
+- Added PCSX2 via PPA
+- Added XEMU via PPA
+- Added RPCSX3 via appimage
 - Migrated to new Sunshine branch (from https://github.com/LizardByte/Sunshine)
 - Added all mesa packages
 - Deleted: SSH/dind
@@ -36,10 +40,8 @@ docker compose up -d
 	- **Need Help:** Resolve High CPU Usage (i guess because of a dummy xorg driver. Probably will be fixed with Wayland)
 	- Add most-used cores & assets to image (probably already in the image just need to fix the paths in RA)
 - Add More Emulators
-	- Wine/Lutris
+	- Wine/Lutris for Windows Games
 	- YUZU
-	- RPCS3
-	- XEMU
 	- Xenia
 - Github workflows
 	- Build and publish latest image
@@ -57,8 +59,6 @@ docker compose up -d
 	- NVIDIA
 	- Intel
 - Make image more lightweight with package trimming
-- EmulationStation integrated?
-- Auto-scanning of /mnt/Games
 - Create virtual application windows dimensions based on the client (Resolution/HDR, now its hardcoded in xorg.conf and ENV) or in docker-compose
 - Different images for different GPUs?
 

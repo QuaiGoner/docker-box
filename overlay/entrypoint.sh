@@ -24,28 +24,6 @@ for init_script in /etc/cont-init.d/*.sh ; do
     source "${init_script}"
 done
 
-# Execute any user generated init scripts
-mkdir -p ${USER_HOME}/init.d
-chown -R ${USER} ${USER_HOME}/init.d
-for user_init_script in ${USER_HOME}/init.d/*.sh ; do
-
-    # Check that a file was found 
-    # (If no files exist in this directory, then user_init_script will be empty)
-    if [[ -e "${user_init_script}" ]]; then
-        
-        echo
-        echo "[ USER:${user_init_script}: executing... ]"
-        sed -i 's/\r$//' "${user_init_script}"
-
-        # Execute user script in sub process. 
-        # This way if it is messed up, we dont get caught in an init loop
-        chmod +x "${user_init_script}"
-        cat "${user_init_script}" | bash
-
-    fi
-
-done
-
 # Ensure all scripts are executable
 chmod a+rwx /opt/scripts/*.sh
 

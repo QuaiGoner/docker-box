@@ -119,6 +119,41 @@ RUN \
 			i965-va-driver-shaders \
 # Install supervisor
 			supervisor
+			
+# Install EmulationStaion_DE
+RUN \
+    echo "**** Install ESDE ****" \
+        && wget -O /tmp/esde.deb https://gitlab.com/es-de/emulationstation-de/-/package_files/71412450/download \
+        && apt install -y /tmp/esde.deb
+		
+# Install PCSX2
+RUN add-apt-repository -y ppa:pcsx2-team/pcsx2-daily && \
+    apt-get update && \
+    apt-get install -y pcsx2-unstable && \
+    # \
+    # Cleanup \
+    apt-get remove -y software-properties-common gpg-agent && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install XEMU
+RUN add-apt-repository -y ppa:mborgerson/xemu && \
+    apt-get update && \
+    apt-get install -y xemu && \
+    # \
+    # Cleanup \
+    apt-get remove -y software-properties-common gpg-agent && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
+	
+# Install RPCS3
+RUN \
+    echo "**** Install RPCS3 ****" && \
+        mkdir /home/default/Applications && \
+        cd /home/default/Applications && \
+        wget -O rpcs3-emu.AppImage https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-6809d84a0029377eab059a51ce38f440e325be1c/rpcs3-v0.0.26-14564-6809d84a_linux64.AppImage && \
+        chmod +x /home/default/Applications/rpcs3-emu.AppImage		
+		
 # Install Retroarch
 RUN \
     echo "**** Install Retroarch ****" \
@@ -131,25 +166,6 @@ RUN \
 			retroarch \
 			retroarch-assets \
 			libretro-*
-# Install RPCS3
-RUN \
-    echo "**** Install RPCS3 ****" \
-        && mkdir /opt/rpcs3 \
-        && cd /opt/rpcs3 \
-        && wget -O rpcs3.AppImage https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-6809d84a0029377eab059a51ce38f440e325be1c/rpcs3-v0.0.26-14564-6809d84a_linux64.AppImage \
-		&& apt install -y fuse \
-        && chmod +x /opt/rpcs3/rpcs3.AppImage
-# Install Steam
-RUN \
-    echo "**** Install steam ****" \
-        && dpkg --add-architecture i386 \
-        && apt-get update \
-        && echo steam steam/question select "I AGREE" | debconf-set-selections \
-        && echo steam steam/license note '' | debconf-set-selections \
-        && apt-get install -y \
-        && apt-get install -y \
-            steam \
-            steam-devices
 # Install NOVNC
 ARG NOVNC_VERSION=1.2.0
 RUN \
