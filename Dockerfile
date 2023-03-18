@@ -243,6 +243,7 @@ RUN \
         && rm -rf /opt/noVNC \
         && cd /opt \
         && mv -f /tmp/noVNC-${NOVNC_VERSION} /opt/noVNC \
+		&& cp -r /templates/noVNC/* /opt/noVNC
         && cd /opt/noVNC \
         && ln -s vnc.html index.html \
         && chmod -R 755 /opt/noVNC \
