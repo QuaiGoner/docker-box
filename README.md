@@ -61,5 +61,4 @@ docker compose up -d
 - Make image more lightweight with package trimming
 - Create virtual application windows dimensions based on the client (Resolution/HDR, now its hardcoded in xorg.conf and ENV) or in docker-compose
 - Different images for different GPUs?
-
 - **Multi-tenant**
