@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=RPCS3 - PS3 Emulator
-Categories=Game;
-Exec=/opt/rpcs3/rpcs3.AppImage %U
-Icon=installsoftware
-Terminal=false
-Type=Application
