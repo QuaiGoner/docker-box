@@ -32,7 +32,7 @@ services:
       # Input devices used for mouse and joypad support inside the container.
       - /dev/input/:/dev/input/:ro
       # Persistence
-      - ./docker-box/:/home/default/.config/
+      - ./docker-box/:/home/default/
       # The location with games
       - /mnt/Vault101_2/Games101/:/home/default/ROMs/:ro
 
