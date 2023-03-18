@@ -140,7 +140,7 @@ RUN add-apt-repository -y ppa:mborgerson/xemu && \
 # Install RPCS3
 RUN \
     echo "**** Install RPCS3 ****" && \
-        mkdir /home/default/Applications && \
+        mkdir -p /home/default/Applications && \
         cd /home/default/Applications && \
         wget -O rpcs3-emu.AppImage https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-6809d84a0029377eab059a51ce38f440e325be1c/rpcs3-v0.0.26-14564-6809d84a_linux64.AppImage && \
         chmod +x /home/default/Applications/rpcs3-emu.AppImage		
