@@ -151,6 +151,7 @@ RUN \
 # Install EmulationStaion_DE
 RUN \
     echo "**** Install ESDE ****" \
+        && apt-get update \
         && wget -O /tmp/esde.deb https://gitlab.com/es-de/emulationstation-de/-/package_files/71412450/download \
         && apt install -y /tmp/esde.deb \
 		&& rm /tmp/esde.deb
