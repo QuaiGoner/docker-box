@@ -135,12 +135,7 @@ RUN add-apt-repository -y ppa:pcsx2-team/pcsx2-daily && \
 # Install XEMU
 RUN add-apt-repository -y ppa:mborgerson/xemu && \
     apt-get update && \
-    apt-get install -y xemu && \
-    # \
-    # Cleanup \
-    apt-get remove -y software-properties-common gpg-agent && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y xemu
 	
 # Install RPCS3
 RUN \
