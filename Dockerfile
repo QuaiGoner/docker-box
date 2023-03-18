@@ -139,7 +139,8 @@ RUN \
 RUN \
     echo "**** Install ESDE ****" \
         && wget -O /tmp/esde.deb https://gitlab.com/es-de/emulationstation-de/-/package_files/71412450/download \
-        && apt install -y /tmp/esde.deb
+        && apt install -y /tmp/esde.deb \
+		&& rm /tmp/esde.deb
 
 # Install Retroarch
 RUN \
@@ -152,7 +153,8 @@ RUN \
 			libaio-dev \
 			retroarch \
 			retroarch-assets \
-			libretro-* \
+			libretro-*
+RUN \
     echo "**** Configure Retroarch ****" \
         && mkdir -p /home/${USER}/.config/retroarch/assets \
         && chmod -R a+rw /home/${USER}/.config/retroarch/ \
@@ -190,7 +192,7 @@ RUN \
         wget -O yuzu-emu.AppImage https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-1373/yuzu-mainline-20230315-6d76a54d3.AppImage && \
         chmod +x /home/default/Applications/yuzu-emu.AppImage		
 
-#Install Lutris/Wine
+# Install Lutris/Wine
 RUN \
     echo "**** Install Lutris/Wine ****" \
 		&& add-apt-repository -y ppa:lutris-team/lutris \
