@@ -21,10 +21,6 @@ trap _term SIGTERM SIGINT
 # EXECUTE PROCESS:
 # Wait for the X server to start
 wait_for_x
-# Start the sunshine server
-emulationstation &
+# Start the es
+exec /usr/bin/emulationstation &
 es_pid=$!
-
-
-# WAIT FOR CHILD PROCESS:
-wait "$es_pid"
