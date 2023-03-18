@@ -75,8 +75,8 @@ export XDG_DATA_DIRS="${XDG_DATA_DIRS}:/var/lib/flatpak/exports/share:/home/${US
 chmod +x /usr/bin/start-desktop.sh
 # Set the default background for gnome based desktop
 mkdir -p /etc/alternatives
-ln -sf /usr/share/backgrounds/retroarch.png /etc/alternatives/desktop-background
-chmod a+r /etc/alternatives/desktop-background
+#ln -sf /usr/share/backgrounds/retroarch.png /etc/alternatives/desktop-background
+#chmod a+r /etc/alternatives/desktop-background
 
 
 # Setup home directory and permissions
