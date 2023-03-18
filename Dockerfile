@@ -1,8 +1,10 @@
 FROM ubuntu:22.04
 LABEL maintainer="QuaiGoner (kr052997@gmail.com)"
 RUN DEBIAN_FRONTEND=noninteractive TZ=Europe/London apt-get update && apt-get -y install tzdata keyboard-configuration
+
 # Add FS overlay
 COPY overlay /
+
 # Configure default user and set env
 ENV \
     PUID=99 \
@@ -13,22 +15,26 @@ ENV \
     USER_HOME="/home/default" \
     TZ="Asia/Novosibirsk" \
     USER_LOCALES="en_US.UTF-8 UTF-8"
+
 # Install core packages
 RUN \
-    echo "**** Update apt database ****" \
-        && apt-get update
-RUN \
-    echo "**** Install tools and repos ****" \
+    echo "**** Install tools and configure process ****" \
+       && apt-get update \
         && apt-get install -y --no-install-recommends \
             software-properties-common \
             apt-utils \
 			gpg-agent \
 			locales \
-        && add-apt-repository ppa:libretro/stable \
 		&& dpkg --add-architecture i386 \
 	    && echo "**** Install and configure locals ****" \
         && echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
-        && locale-gen
+        && locale-gen \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/* \
+            /var/tmp/* \
+            /tmp/*
 RUN \
     echo "**** Install all required (mesa/vulkan/desktop/audio/drivers/fuse) packages ****" \
         && apt-get install -y --no-install-recommends \
@@ -133,7 +139,13 @@ RUN \
             vainfo \
 			i965-va-driver-shaders \
 # Install supervisor
-			supervisor
+			supervisor \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/* \
+            /var/tmp/* \
+            /tmp/*
 			
 # Install EmulationStaion_DE
 RUN \
@@ -145,6 +157,7 @@ RUN \
 # Install Retroarch
 RUN \
     echo "**** Install Retroarch ****" \
+        && add-apt-repository ppa:libretro/stable \
         && apt-get update \
         && apt-get install -y \
 			libusb-1.0-0 \
@@ -153,7 +166,13 @@ RUN \
 			libaio-dev \
 			retroarch \
 			retroarch-assets \
-			libretro-*
+			libretro-* \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/* \
+            /var/tmp/* \
+            /tmp/*
 RUN \
     echo "**** Configure Retroarch ****" \
         && mkdir -p /home/${USER}/.config/retroarch/assets \
