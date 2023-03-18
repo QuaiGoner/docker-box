@@ -26,6 +26,7 @@ done
 
 # Ensure all scripts are executable
 chmod a+rwx /opt/scripts/*.sh
+chmod a+rwx /usr/bin/*.sh
 
 # Start supervisord
 echo
