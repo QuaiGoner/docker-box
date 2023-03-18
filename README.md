@@ -13,7 +13,7 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 - Added RetroArch via PPA
 - Added PCSX2 via PPA
 - Added XEMU via PPA
-- Added RPCSX3 via appimage
+- Added RPCS3 via appimage
 - Migrated to new Sunshine branch (from https://github.com/LizardByte/Sunshine)
 - Added all mesa packages
 - Deleted: SSH/dind
@@ -27,7 +27,7 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 ```
 git clone https://github.com/QuaiGoner/docker-box && cd docker-box && docker build -t docker-box .
 
-#Change /mnt/Games mountpoint to your likings in compose file
+#Change /home/default/ROMs/ mountpoint to your likings in compose file
 
 docker compose up -d
 

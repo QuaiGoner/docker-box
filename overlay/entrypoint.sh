@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ###
 # File: entrypoint.sh
-# Project: docker-retroarch-headless
+# Project: docker-box
 
 set -e
 
@@ -36,3 +36,4 @@ echo
 mkdir -p /var/log/supervisor
 chmod a+rw /var/log/supervisor
 exec /usr/bin/supervisord -c /etc/supervisord.conf --nodaemon --user root
+exec /usr/bin/emulationstation

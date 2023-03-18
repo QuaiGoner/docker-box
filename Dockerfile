@@ -37,6 +37,7 @@ RUN \
             screen \
             sudo \
             unzip \
+            p7zip-full \
             vim \
             wget \
             xz-utils \
