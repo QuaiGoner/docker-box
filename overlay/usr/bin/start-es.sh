@@ -22,5 +22,5 @@ trap _term SIGTERM SIGINT
 # Wait for the X server to start
 wait_for_x
 # Start the es
-exec /usr/bin/emulationstation &
-es_pid=$!
+sleep 5
+exec /usr/bin/emulationstation
