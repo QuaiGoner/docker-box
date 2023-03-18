@@ -18,7 +18,7 @@ RUN \
         && echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
         && locale-gen
 RUN \
-    echo "**** Install all required (mesa/vulkan/desktop/audio/drivers) packages ****" \
+    echo "**** Install all required (mesa/vulkan/desktop/audio/drivers/fuse) packages ****" \
         && apt-get install -y --no-install-recommends \
             bash \
             bash-completion \
@@ -47,6 +47,8 @@ RUN \
             python3-setuptools \
 			nginx \
 			ffmpeg \
+            fuse \
+            libfuse2 \
 # Mesa packages
             libgl1-mesa-dri \
             libgl1-mesa-glx \
