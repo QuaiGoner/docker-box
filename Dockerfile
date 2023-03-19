@@ -182,14 +182,18 @@ RUN \
         && rm /tmp/assets.zip
 		
 # Install PCSX2
-RUN add-apt-repository -y ppa:pcsx2-team/pcsx2-daily && \
+RUN \
+    echo "**** Install PCSX2 ****" && \
+	add-apt-repository -y ppa:pcsx2-team/pcsx2-daily && \
     apt-get update && \
     apt-get install -y pcsx2-unstable
 
 # Install XEMU
-RUN add-apt-repository -y ppa:mborgerson/xemu && \
-    apt-get update && \
-    apt-get install -y xemu
+RUN \
+    echo "**** Install XEMU ****" \
+	&& add-apt-repository -y ppa:mborgerson/xemu \
+    && apt-get update \
+    && apt-get install -y xemu
 	
 # Install RPCS3
 RUN \
