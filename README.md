@@ -10,10 +10,11 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.04 based
 - Added EmulationStation-DE (from https://gitlab.com/es-de/emulationstation-de)
-- Added RetroArch via PPA
+- Added RetroArch via PPA (with PPA-cores and pre-configure assets)
 - Added PCSX2 via PPA
 - Added XEMU via PPA
 - Added RPCS3 via appimage
+- Added YUZU via appimage
 - Migrated to new Sunshine branch (from https://github.com/LizardByte/Sunshine)
 - Added all mesa packages
 - Deleted: SSH/dind

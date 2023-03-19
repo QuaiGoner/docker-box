@@ -177,7 +177,7 @@ RUN \
         && cp -vf /templates/retroarch/* /home/${USER}/.config/retroarch/ \
         && mkdir -p /home/${USER}/.config/retroarch/cores/ \
         && cp -u /usr/lib/$(uname -m)-linux-gnu/libretro/* "/home/${USER}/.config/retroarch/cores/" \
-        && wget -q -P /tmp https://buildbot.libretro.com/assets/frontend/assets.zip \
+        && wget -q --show-progress -P /tmp https://buildbot.libretro.com/assets/frontend/assets.zip \
         && unzip /tmp/assets.zip -d /home/default/.config/retroarch/assets \
         && rm /tmp/assets.zip
 		
