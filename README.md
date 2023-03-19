@@ -10,7 +10,7 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.04 based
 - Added EmulationStation-DE (from https://gitlab.com/es-de/emulationstation-de)
-- Added RetroArch via PPA (with PPA-cores)
+- Added RetroArch via PPA (with PPA-cores and assets)
 - Added PCSX2 via PPA
 - Added XEMU via PPA
 - Added RPCS3 via appimage
@@ -39,7 +39,7 @@ docker compose up -d
 - More refactoring and plug&play
 	- **Need Help:** **Closing applications from Moonlight with retaining session** - starting is working, but not closing. Also when pausing session in moonligt - app gets killed (Simillar issue here: https://github.com/Steam-Headless/docker-steam-headless/issues/23)
 	- **Need Help:** Resolve High CPU Usage (i guess because of a dummy xorg driver. Probably will be fixed with Wayland)
-	- Restart ES on exit
+	- Supervise EmulationStation
     - Get rid of many sh init scripts (move to entrypoint or Dockerfile)
 - Add More Emulators
 	- Wine/Lutris for Windows Games
