@@ -41,7 +41,6 @@ docker compose up -d
 	- **Need Help:** Resolve High CPU Usage (i guess because of a dummy xorg driver. Probably will be fixed with Wayland)
 	- Restart ES on exit
     - Get rid of many sh init scripts (move to entrypoint or Dockerfile)
-	- Fix RA Assets
 - Add More Emulators
 	- Wine/Lutris for Windows Games
 	- Xenia

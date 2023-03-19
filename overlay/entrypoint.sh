@@ -48,6 +48,8 @@ echo  "Manually download assets"
 	echo "extracting assets"
 	unzip /tmp/assets.zip -d /home/default/.config/retroarch/assets
 	rm /tmp/assets.zip
+ else
+    echo "RetroArch assets folder present and wont be downloaded"
  fi
 
 echo "Retroarch Configured"
