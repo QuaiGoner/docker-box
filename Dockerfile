@@ -180,6 +180,8 @@ RUN \
         && wget -q --show-progress -P /tmp https://buildbot.libretro.com/assets/frontend/assets.zip \
         && unzip /tmp/assets.zip -d /home/default/.config/retroarch/assets \
         && rm /tmp/assets.zip
+
+VOLUME /home/${USER}/
 		
 # Install PCSX2
 RUN \
