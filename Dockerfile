@@ -169,17 +169,6 @@ RUN \
 			retroarch \
 			retroarch-assets \
 			libretro-*
-RUN \
-    echo "**** Configure Retroarch ****" \
-        && mkdir -p /home/${USER}/.config/retroarch/assets \
-        && chmod -R a+rw /home/${USER}/.config/retroarch/ \
-        && chown -R ${PUID}:${PGID} /home/${USER}/.config/retroarch/ \
-        && cp -vf /templates/retroarch/* /home/${USER}/.config/retroarch/ \
-        && mkdir -p /home/${USER}/.config/retroarch/cores/ \
-        && cp -u /usr/lib/$(uname -m)-linux-gnu/libretro/* "/home/${USER}/.config/retroarch/cores/" \
-        && wget -q --show-progress -P /tmp https://buildbot.libretro.com/assets/frontend/assets.zip \
-        && unzip /tmp/assets.zip -d /home/default/.config/retroarch/assets \
-        && rm /tmp/assets.zip
 
 VOLUME /home/${USER}/
 		
