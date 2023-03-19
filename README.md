@@ -10,7 +10,7 @@ The goal is to have single-docker image endpoint for retro and some-modern gamin
 ## Changes from original project (docker-steam-headless):
 - Ubuntu 22.04 based
 - Added EmulationStation-DE (from https://gitlab.com/es-de/emulationstation-de)
-- Added RetroArch via PPA (with PPA-cores and pre-configure assets)
+- Added RetroArch via PPA (with PPA-cores)
 - Added PCSX2 via PPA
 - Added XEMU via PPA
 - Added RPCS3 via appimage
@@ -41,6 +41,7 @@ docker compose up -d
 	- **Need Help:** Resolve High CPU Usage (i guess because of a dummy xorg driver. Probably will be fixed with Wayland)
 	- Restart ES on exit
     - Get rid of many sh init scripts (move to entrypoint or Dockerfile)
+	- Fix RA Assets
 - Add More Emulators
 	- Wine/Lutris for Windows Games
 	- Xenia
