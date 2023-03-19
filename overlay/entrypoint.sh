@@ -30,8 +30,6 @@ chmod a+rwx /usr/bin/*.sh
 
 # RetroArch section
 echo "***Configure Retroarch****"
-chmod +x /usr/bin/start-retroarch.sh
-
 echo "Ensure proper Retroarch folder permissions"
 mkdir -p /home/${USER}/.config/retroarch/
 chmod -R a+rw /home/${USER}/.config/retroarch/
