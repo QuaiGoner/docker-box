@@ -28,6 +28,7 @@ done
 chmod a+rwx /opt/scripts/*.sh
 chmod a+rwx /usr/bin/*.sh
 
+# RetroArch section
 echo "***Configure Retroarch****"
 chmod +x /usr/bin/start-retroarch.sh
 
