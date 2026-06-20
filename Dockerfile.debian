@@ -309,6 +309,30 @@ RUN \
     && \
     echo "**** UMU installed ****"
 
+# Pre install AMD mesa Drivers
+RUN \
+    echo "**** Enable i386 architecture ****" \
+        && dpkg --add-architecture i386 \
+    && \
+    echo "**** Update apt database ****" \
+        && apt-get update \
+    && \
+    echo "**** Install Vulkan ****" \
+        && apt-get install -y --no-install-recommends \
+            libvulkan1 \
+            libvulkan1:i386 \
+            mesa-vulkan-drivers \
+            mesa-vulkan-drivers:i386 \
+            mesa-utils \
+            mesa-utils-extra \
+            vulkan-tools \
+    && \
+    echo "**** Section cleanup ****" \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/*
+
 # Add support for flatpaks and D-Bus system services
 ENV \
     XDG_DATA_DIRS="/home/default/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/"
