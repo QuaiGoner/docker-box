@@ -353,6 +353,16 @@ RUN \
     && \
     echo "**** Configure flatpak ****" \
         && flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo \
+    echo "**** Install Flatpak apps ****" \
+        && su - default -c "flatpak --user install --assumeyes --or-update flathub org.mozilla.firefox" \
+    && \
+    su - default -c "flatpak --user install --assumeyes --or-update flathub com.github.tchx84.Flatseal" \
+    && \
+    su - default -c "flatpak --user install --assumeyes --or-update flathub net.davidotek.pupgui2" \
+    && \
+    su - default -c "flatpak --user install --assumeyes --or-update flathub com.github.Matoking.protontricks" \
+    && \
+    echo "**** Fix bubblewrap permissions ****" \
         && dpkg-statoverride --update --add root root 0755 /usr/bin/bwrap \
     && \
     echo "**** Section cleanup ****" \
