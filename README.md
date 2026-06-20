@@ -7,6 +7,8 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
   - Protontricks (Flatpak)
   - Mozilla (Flatpak)
   - Mesa Drivers (deb)
+- Wants/Needs:
+  - move to wayland for zerocopy
 
 ![](./images/banner.jpg)
 
