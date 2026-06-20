@@ -1,6 +1,12 @@
 # Headless Steam Service
 
 All credits to https://github.com/Steam-Headless/docker-steam-headless, these repo is my personal fork
+- Preinstalled:
+  - UMU (deb)
+  - ProtonUPQT (Flatpak)
+  - Protontricks (Flatpak)
+  - Mozilla (Flatpak)
+  - Mesa Drivers (deb)
 
 ![](./images/banner.jpg)
 
