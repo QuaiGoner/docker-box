@@ -1,5 +1,7 @@
 # Headless Steam Service
 
+All credits to https://github.com/Steam-Headless/docker-steam-headless, these repo is my personal fork
+
 ![](./images/banner.jpg)
 
 Remote Game Streaming Server.
