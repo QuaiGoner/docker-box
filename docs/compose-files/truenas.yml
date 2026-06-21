@@ -1,5 +1,3 @@
----
-
 services:
   steam-headless:
     cap_add:
@@ -26,7 +24,8 @@ services:
       - c 13:* rwm
       - c 226:* rwm
     devices:
-      - /dev/dri:/dev/dri
+      - /dev/dri/card0:/dev/dri/card0 # GPU Acceleration
+      - /dev/dri/renderD128:/dev/dri/renderD128 # GPU Acceleration
       - /dev/fuse:/dev/fuse
       - /dev/uinput:/dev/uinput
     environment:
@@ -62,8 +61,7 @@ services:
     hostname: server101
     image: docker-box:latest
     ipc: host
-    network_mode: host
-    privileged: True
+    network_mode: host # For Steam Remote Play working
     restart: unless-stopped
     security_opt:
       - apparmor=unconfined
@@ -80,3 +78,4 @@ services:
         /mnt/vault101/vault101/Games101/Emulation/roms/ports:/mnt/vault101/vault101/Games101/Emulation/roms/ports:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /tmp/pulse:/tmp/pulse:rw
+      - /dev/input/:/dev/input/:ro # Without it Steam Input does not work for some reason
