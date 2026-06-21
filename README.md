@@ -1,12 +1,17 @@
 # Headless Steam Service
 
-All credits to https://github.com/Steam-Headless/docker-steam-headless, these repo is my personal fork
+All credits to https://github.com/Steam-Headless/docker-steam-headless, these repo is my personal fork, with the goal to minimize internet requirements and move more to proton-based launching
 - Preinstalled:
   - UMU (deb)
-  - ProtonUPQT (Flatpak)
-  - Protontricks (Flatpak)
-  - Mozilla (Flatpak)
   - Mesa Drivers (deb)
+  - Install flatpak on first run:
+	- ProtonUPQT (Flatpak)
+    - Protontricks (Flatpak)
+    - Mozilla (Flatpak)
+- Wants/Needs:
+  - move to wayland for zerocopy and for dropping the need of a monitor for amd
+  - replace noVNC with selkies
+  - drop some unneded priviliges
 
 ![](./images/banner.jpg)
 

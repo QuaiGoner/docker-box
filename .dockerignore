@@ -1,2 +1,4 @@
 config
 devops
+docker-box-latest.tar.gz
+rebuild_clean.sh
