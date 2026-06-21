@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "**** Installing/upgrading ProtonUp-Qt via flatpak ****"
+echo "**** Installing Protontricks via flatpak ****"
 
 # Install ProtonUp-Qt
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 

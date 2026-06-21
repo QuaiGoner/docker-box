@@ -38,6 +38,8 @@ if [[ ! -f /tmp/.desktop-apps-updated ]]; then
     xterm -geometry 200x50+0+0 -ls -e /bin/bash -c "
         source /usr/bin/install_firefox.sh;
         source /usr/bin/install_protonup.sh;
+		source /usr/bin/install_protontricks.sh;
+		source /usr/bin/install_flatseal.sh;
         sleep 1;
     "
     touch /tmp/.desktop-apps-updated
