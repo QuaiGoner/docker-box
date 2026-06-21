@@ -5,7 +5,12 @@ echo "**** Installing/upgrading Firefox via flatpak ****"
 # Install Firefox
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 
 flatpak --user install --assumeyes --or-update flathub org.mozilla.firefox
-
+echo "**** Installing/upgrading Flatseal via flatpak ****"
+flatpak --user install --assumeyes --or-update flathub com.github.tchx84.Flatseal
+echo "**** Installing/upgrading ProtonUPQT via flatpak ****"
+flatpak --user install --assumeyes --or-update flathub net.davidotek.pupgui2
+echo "**** Installing/upgrading Protontricks via flatpak ****"
+flatpak --user install --assumeyes --or-update flathub com.github.Matoking.protontricks
 # Configure Firefox as the default browser
 echo "Configure Firefox..."
 custom_webbrowser="$(cat <<EOF
