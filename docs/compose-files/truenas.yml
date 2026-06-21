@@ -1,3 +1,5 @@
+---
+
 services:
   steam-headless:
     cap_add:
@@ -60,7 +62,7 @@ services:
       - 107
       - 568
     hostname: server101
-    image: josh5/steam-headless:debian
+    image: docker-box:latest
     ipc: host
     network_mode: host
     privileged: True
