@@ -281,6 +281,44 @@ RUN \
     && \
     echo
 
+# Pre install AMD mesa Drivers
+RUN \
+    echo "**** Enable i386 architecture ****" \
+        && dpkg --add-architecture i386 \
+    && \
+    echo "**** Update apt database ****" \
+        && apt-get update \
+    && \
+    echo "**** Install Vulkan ****" \
+        && apt-get install -y --no-install-recommends \
+            libvulkan1 \
+            libvulkan1:i386 \
+            mesa-vulkan-drivers \
+            mesa-vulkan-drivers:i386 \
+            mesa-utils \
+            mesa-utils-extra \
+            vulkan-tools \
+			gcc-multilib \
+			libc6:i386 \
+			libegl1:i386 \
+			libgbm1:i386 \
+			libgl1:i386 \
+			libgl1-mesa-dri:i386 \
+			mesa-libgallium:i386 \
+			mesa-va-drivers:i386 \
+			mesa-vulkan-drivers:i386 \
+			steam-libs \
+			steam-libs-amd64 \
+			steam-libs-i386 \
+	
+    && \
+    echo "**** Section cleanup ****" \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/*
+
+
 RUN \
     echo "**** Update apt database ****" \
         && apt-get update \
@@ -309,29 +347,7 @@ RUN \
     && \
     echo "**** UMU installed ****"
 
-# Pre install AMD mesa Drivers
-RUN \
-    echo "**** Enable i386 architecture ****" \
-        && dpkg --add-architecture i386 \
-    && \
-    echo "**** Update apt database ****" \
-        && apt-get update \
-    && \
-    echo "**** Install Vulkan ****" \
-        && apt-get install -y --no-install-recommends \
-            libvulkan1 \
-            libvulkan1:i386 \
-            mesa-vulkan-drivers \
-            mesa-vulkan-drivers:i386 \
-            mesa-utils \
-            mesa-utils-extra \
-            vulkan-tools \
-    && \
-    echo "**** Section cleanup ****" \
-        && apt-get clean autoclean -y \
-        && apt-get autoremove -y \
-        && rm -rf \
-            /var/lib/apt/lists/*
+
 
 # Add support for flatpaks and D-Bus system services
 ENV \
@@ -353,16 +369,6 @@ RUN \
     && \
     echo "**** Configure flatpak ****" \
         && flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo \
-    echo "**** Install Flatpak apps ****" \
-        && su - default -c "flatpak --user install --assumeyes --or-update flathub org.mozilla.firefox" \
-    && \
-    su - default -c "flatpak --user install --assumeyes --or-update flathub com.github.tchx84.Flatseal" \
-    && \
-    su - default -c "flatpak --user install --assumeyes --or-update flathub net.davidotek.pupgui2" \
-    && \
-    su - default -c "flatpak --user install --assumeyes --or-update flathub com.github.Matoking.protontricks" \
-    && \
-    echo "**** Fix bubblewrap permissions ****" \
         && dpkg-statoverride --update --add root root 0755 /usr/bin/bwrap \
     && \
     echo "**** Section cleanup ****" \
