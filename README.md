@@ -5,10 +5,10 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
   - UMU (deb)
   - Mesa Drivers (deb)
 - Wants/Needs:
-  - move to wayland for zerocopy
   - ProtonUPQT (Flatpak)
   - Protontricks (Flatpak)
   - Mozilla (Flatpak)
+  - move to wayland for zerocopy and for dropping the need of a monitor for amd
   - replace noVNC with selkies
   - drop some unneded priviliges
 
