@@ -72,7 +72,7 @@ If your host is already running X, you can just use that. To do this, be sure to
 - [Docker Compose](./docs/docker-compose.md)
 - [Unraid](./docs/unraid.md)
 - [Ubuntu Server](./docs/ubuntu-server.md)
-
+- [TrueNAS SCALE](./docs/compose-files/truenas.yml)
 
 ---
 ## Running locally:
