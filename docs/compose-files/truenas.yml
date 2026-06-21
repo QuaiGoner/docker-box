@@ -30,30 +30,28 @@ services:
       - /dev/fuse:/dev/fuse
       - /dev/uinput:/dev/uinput
     environment:
-      DISPLAY: ':0'
       ENABLE_EVDEV_INPUTS: 'true'
       ENABLE_STEAM: 'true'
       ENABLE_SUNSHINE: 'true'
       ENABLE_VNC_AUDIO: 'true'
-      FORCE_X11_DUMMY_CONFIG: 'false'
+      FORCE_X11_DUMMY_CONFIG: 'true'
       GID: '568'
       GROUP_ID: '568'
-      HOST_DBUS: 'true'
       HOST_HOSTNAME: server101
       HOST_OS: TrueNAS
-      MODE: primary
       PGID: '568'
       PORT_NOVNC_WEB: '31100'
       PUID: '568'
       STEAM_ARGS: '-silent'
-      SUNSHINE_PASS: 123
-      SUNSHINE_USER: 123
+      SUNSHINE_PASS: test
+      SUNSHINE_USER: test
+      TZ: Asia/Novosibirsk
       UID: '568'
       UMASK: '002'
       UMASK_SET: '002'
       USER_ID: '568'
       USER_LOCALES: en_US.UTF-8 UTF-8
-      USER_PASSWORD: 123
+      USER_PASSWORD: test
       WEB_UI_MODE: vnc
     extra_hosts:
       server101: 127.0.0.1
@@ -78,7 +76,7 @@ services:
     volumes:
       - /mnt/apps101/docker101/steamheadless/home:/home/default:rw
       - /mnt/apps101/docker101/steamheadless/games:/mnt/games:rw
-      - /run/dbus:/run/dbus:ro
+      - >-
+        /mnt/vault101/vault101/Games101/Emulation/roms/ports:/mnt/vault101/vault101/Games101/Emulation/roms/ports:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /tmp/pulse:/tmp/pulse:rw
-      - /dev/input/:/dev/input/:ro

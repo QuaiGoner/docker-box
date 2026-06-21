@@ -115,9 +115,11 @@ function configure_x_server {
     
     # Configure dummy config if no monitor is connected (not applicable to NVIDIA)
     if ([ "X${monitor_connected}" = "X" ] || [ "${FORCE_X11_DUMMY_CONFIG}" = "true" ]); then 
-        print_step_header "No monitors connected. Installing dummy xorg.conf"
+        print_step_header "No monitors connected. Installing dummy xorg.conf and edid from /home/default/"
         # Use a dummy display input
         cp -f /templates/xorg/xorg.dummy.conf /etc/X11/xorg.conf
+		mkdir -p /etc/X11/edid
+		cp -f /home/default/edid.bin /etc/X11/edid/edid.bin
     fi
 }
 

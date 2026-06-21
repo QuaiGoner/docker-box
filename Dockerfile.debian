@@ -647,8 +647,11 @@ ENV \
     PORT_NOVNC_WEB="8083" \
     NEKO_NAT1TO1=""
 
+ENV PORT_SELKIES="8080"
+
 # Expose the required ports
 EXPOSE 8083
+EXPOSE 8080
 
 # Set entrypoint
 RUN chmod +x /entrypoint.sh
