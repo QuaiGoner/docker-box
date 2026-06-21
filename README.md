@@ -13,7 +13,7 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
   - Changed dummy config, only works for AMDGPU (thanks to https://github.com/Steam-Headless/docker-steam-headless/issues/168#issuecomment-2943219185)
   - Added edid.bin from random monitor for dummy config to work
 - Wants/Needs:
-  - move to wayland for zerocopy and for dropping the need of a monitor for amd
+  - move to wayland for zerocopy and for fun
   - replace noVNC with selkies
   - drop some unneded priviliges
 
