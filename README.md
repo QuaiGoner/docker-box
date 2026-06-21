@@ -16,6 +16,8 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
   - move to wayland for zerocopy and for fun
   - replace noVNC with selkies
   - drop some unneded priviliges
+  - make image immutable, get rid of startup scripts
+  - bake in ENVS
 
 ![](./images/banner.jpg)
 
