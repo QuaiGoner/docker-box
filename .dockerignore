@@ -2,3 +2,7 @@ config
 devops
 docker-box-latest.tar.gz
 rebuild_clean.sh
+docker-compose.test.yml
+home
+games
+sockets
