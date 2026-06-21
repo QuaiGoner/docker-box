@@ -8,6 +8,10 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
 	- ProtonUPQT (Flatpak)
     - Protontricks (Flatpak)
     - Mozilla (Flatpak)
+- Changes:
+  - Start addint support for selkies
+  - Changed dummy config, only works for AMDGPU
+  - Added edid.bin from random monitor for dummy config to work
 - Wants/Needs:
   - move to wayland for zerocopy and for dropping the need of a monitor for amd
   - replace noVNC with selkies
