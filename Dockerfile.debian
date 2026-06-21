@@ -281,6 +281,74 @@ RUN \
     && \
     echo
 
+# Pre install AMD mesa Drivers
+RUN \
+    echo "**** Enable i386 architecture ****" \
+        && dpkg --add-architecture i386 \
+    && \
+    echo "**** Update apt database ****" \
+        && apt-get update \
+    && \
+    echo "**** Install Vulkan ****" \
+        && apt-get install -y --no-install-recommends \
+            libvulkan1 \
+            libvulkan1:i386 \
+            mesa-vulkan-drivers \
+            mesa-vulkan-drivers:i386 \
+            mesa-utils \
+            mesa-utils-extra \
+            vulkan-tools \
+			gcc-multilib \
+			libc6:i386 \
+			libegl1:i386 \
+			libgbm1:i386 \
+			libgl1:i386 \
+			libgl1-mesa-dri:i386 \
+			mesa-libgallium:i386 \
+			mesa-va-drivers:i386 \
+			mesa-vulkan-drivers:i386 \
+			steam-libs \
+			steam-libs-amd64 \
+			steam-libs-i386 \
+	
+    && \
+    echo "**** Section cleanup ****" \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/*
+
+
+RUN \
+    echo "**** Update apt database ****" \
+        && apt-get update \
+    && \
+    echo "**** Install UMU dependencies ****" \
+        && apt-get install -y --no-install-recommends \
+            curl \
+            ca-certificates \
+    && \
+    echo "**** Download and install UMU ****" \
+        && UMU_RELEASE=$(curl -sX GET "https://api.github.com/repos/Open-Wine-Components/umu-launcher/releases/latest" \
+            | awk '/tag_name/{print $4;exit}' FS='[""]') \
+        && curl -L \
+            -o /tmp/umu.deb \
+            "https://github.com/Open-Wine-Components/umu-launcher/releases/download/${UMU_RELEASE}/python3-umu-launcher_${UMU_RELEASE}-1_amd64_debian-13.deb" \
+        && apt-get install -y /tmp/umu.deb \
+        && rm -f /tmp/umu.deb \
+    && \
+    echo "**** Section cleanup ****" \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/* \
+            /var/tmp/* \
+            /tmp/* \
+    && \
+    echo "**** UMU installed ****"
+
+
+
 # Add support for flatpaks and D-Bus system services
 ENV \
     XDG_DATA_DIRS="/home/default/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/"
