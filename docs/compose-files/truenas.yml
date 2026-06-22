@@ -38,7 +38,7 @@ services:
       ENABLE_STEAM: 'true'
       ENABLE_EVDEV_INPUTS: 'true'
       USER_LOCALES: en_US.UTF-8 UTF-8
-      WEB_UI_MODE: vnc
+      WEB_UI_MODE: vnc #selkies
     extra_hosts:
       server101: 127.0.0.1
     group_add:

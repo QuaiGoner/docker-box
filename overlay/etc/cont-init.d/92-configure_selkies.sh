@@ -1,10 +1,10 @@
 print_header "Configure Selkies WebRTC"
 
 # Optional: pick port (Selkies default is often 8080 or 8181 depending on build)
-DYNAMIC_PORT_SELKIES=$(get_next_unused_port 32100)
-export PORT_SELKIES=${PORT_SELKIES:-$DYNAMIC_PORT_SELKIES}
+DYNAMIC_PORT_SELKIES=32100
+export SELKIES_PORT=${SELKIES_PORT:-$DYNAMIC_PORT_SELKIES}
 
-print_step_header "Configure Selkies port '${PORT_SELKIES}'"
+print_step_header "Configure Selkies port '${SELKIES_PORT}'"
 
 if ([ "${MODE}" != "s" ] && [ "${MODE}" != "secondary" ]); then
 

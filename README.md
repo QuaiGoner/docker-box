@@ -12,9 +12,9 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
   - Start addint support for selkies
   - Changed dummy config, only works for AMDGPU (thanks to https://github.com/Steam-Headless/docker-steam-headless/issues/168#issuecomment-2943219185)
   - Added edid.bin from random monitor for dummy config to work
+  - Added selkies
 - Wants/Needs:
   - move to wayland for zerocopy and for fun
-  - replace noVNC with selkies
   - drop some uneeded priviliges
   - make image immutable, get rid of startup scripts
   - bake in ENVS

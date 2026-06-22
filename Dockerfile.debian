@@ -610,6 +610,12 @@ RUN \
     && \
     echo
 
+# Download and extract latest Selkies release
+RUN SELKIES_VERSION="$(curl -fsSL "https://api.github.com/repos/selkies-project/selkies/releases/latest" | jq -r '.tag_name' | sed 's/[^0-9\.\-]*//g')" \
+ && mkdir -p /opt/selkies-gstreamer \
+ && curl -fsSL "https://github.com/selkies-project/selkies/releases/download/v${SELKIES_VERSION}/selkies-gstreamer-portable-v${SELKIES_VERSION}_amd64.tar.gz" \
+    | tar -xzf - -C /opt/selkies-gstreamer
+
 # Add FS overlay
 COPY overlay /
 
