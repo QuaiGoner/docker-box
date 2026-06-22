@@ -9,14 +9,14 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
     - Protontricks (Flatpak)
     - Mozilla (Flatpak)
 - Changes:
-  - Changed dummy config, only works for AMDGPU (thanks to https://github.com/Steam-Headless/docker-steam-headless/issues/168#issuecomment-2943219185)
-  - Added edid.bin from random monitor for dummy config to work
+  - Applied tweak: Changed dummy config with edid.bin, only works for AMDGPU (thanks to https://github.com/Steam-Headless/docker-steam-headless/issues/168#issuecomment-2943219185)
   - Added selkies
 - Wants/Needs:
+  - fix vaapi for steam remote play and selkies
+  - investigate udev not working (linked to /dev/input:ro)
+  - disable root/desktop access and replace it with webui that will show supervisor statuses (selkies probably would help here)
   - make image immutable, get rid of startup scripts, bake in ENVS
   - move to wayland for zerocopy and for fun
-  - drop some uneeded priviliges
-  - disable root/desktop access and replace it with webui (selkies probably would help here)
 
 
 
