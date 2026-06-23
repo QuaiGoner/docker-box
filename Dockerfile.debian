@@ -658,8 +658,12 @@ ENV \
     ENABLE_EVDEV_INPUTS="true" \
     ENABLE_WOL_POWER_MANAGER="false" \
     ENABLE_SID="false" \
-    ENABLE_SELKIES="true"
-
+    ENABLE_SELKIES="true" \
+	SELKIES_ENCODER="x264enc" \
+    USER_PASSWORD="test" \
+    SUNSHINE_PASS="test" \
+    SUNSHINE_USER="test"
+	
 # Configure required ports
 ENV \
     PORT_NOVNC_WEB="31100" \
