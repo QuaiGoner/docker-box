@@ -67,6 +67,8 @@ If your host is already running X, you can just use that. To do this, be sure to
   - /run/dbus:/run/dbus:ro    
     **(Mount)**  - *Optional - Configures the container to use the host dbus process*
 
+### AI DISLOSURE:
+LLMs were used to create a webui and helped with other changes.
 
 ---
 ## Installation:
