@@ -2,7 +2,17 @@
 
 All credits to https://github.com/Steam-Headless/docker-steam-headless, these repo is my personal fork, with the goal to minimize internet requirements and move more to proton-based launching
 
-- Changes:
+## Features:
+- Steam Client configured for running on Linux with Proton
+- Moonlight compatible server for easy remote desktop streaming
+- Easy installation of EmeDeck, Heroic and Lutris via Flatpak
+- Full video/audio noVNC web access to a Xfce4 Desktop
+- NVIDIA, AMD and Intel GPU support
+- Full controller support
+- Support for Flatpak and Appimage installation
+- Root access
+- Based on Debian Trixie
+- Changes from original:
 	- Preinstalled:
 		- UMU (deb)
 		- Mesa Drivers (deb)
@@ -15,7 +25,7 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
   - added webui (badly vibecoded)
   - moved logs to stdout
   - deleted neko and wol
-- Wants/Needs:
+- TODO:
   - fix vaapi for steam remote play and selkies
   - investigate udev not working (linked to /dev/input:ro)
   - disable desktop, allow to install flathub apps and access files in home directory from webui
@@ -23,25 +33,6 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
   - move to wayland for zerocopy and for fun
   - drop unnecessary priviliges, create small docker-compose examples
   - delete novnc
-
-
-Remote Game Streaming Server.
-
-Play your games either in the browser with audio or via Steam Link or Moonlight. Play from another Steam Client with Steam Remote Play.
-
-Easily deploy a Steam Docker instance in seconds.
-
-## Features:
-- Steam Client configured for running on Linux with Proton
-- Moonlight compatible server for easy remote desktop streaming
-- Easy installation of EmeDeck, Heroic and Lutris via Flatpak
-- Full video/audio noVNC web access to a Xfce4 Desktop
-- NVIDIA, AMD and Intel GPU support
-- Full controller support
-- Support for Flatpak and Appimage installation
-- Root access
-- Based on Debian Trixie
-
 ---
 ## Notes:
 
@@ -59,7 +50,7 @@ All files that are store outside your home directory are not persistent and will
 It is recommended that you mount your games library to `/mnt/games` and configure Steam to add that path.
 
 ### AUTO START APPLICATIONS:
-In this container, Steam is configured to automatically start. If you wish to add additional services to automatically start, 
+In this container, Steam is configured to automatically start via supervisor. If you wish to add additional services to automatically start, 
 add them under **Applications > Settings > Session and Startup** in the WebUI.
 
 ### NETWORK MODE:
@@ -85,15 +76,3 @@ If your host is already running X, you can just use that. To do this, be sure to
 - [TrueNAS SCALE](./docs/compose-files/truenas.yml)
 
 ---
-## Running locally:
-
-For a development environment, I have created a script in the devops directory.
-
-
----
-## TODO:
-- Remove SSH
-- Require user to enter password for sudo
-- Document how to run this container:
-    - Other server OS
-    - TrueNAS Scale 
