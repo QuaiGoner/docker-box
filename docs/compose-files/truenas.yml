@@ -1,44 +1,35 @@
 services:
-  steam-headless:
+  docker-box:
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
       - SYS_NICE
-    container_name: steam-headless
+    container_name: docker-box
     deploy:
       resources:
         limits:
           cpus: '3'
           memory: 5096M
     device_cgroup_rules:
-      - c 13:* rwm # input devices
-      - c 226:* rwm # GPU/DRM devices
+      - c 13:* rwm
+      - c 226:* rwm
     devices:
-      - /dev/dri/card0:/dev/dri/card0 # GPU Acceleration
-      - /dev/dri/renderD128:/dev/dri/renderD128 # GPU Acceleration
+      - /dev/dri/:/dev/dri/
       - /dev/fuse:/dev/fuse
       - /dev/uinput:/dev/uinput
     environment:
+      FORCE_X11_DUMMY_CONFIG: 'true'
       GID: '568'
       GROUP_ID: '568'
       PGID: '568'
       PUID: '568'
-      UID: '568'
-      USER_ID: '568'
-      PORT_NOVNC_WEB: '31100'
+      SELKIES_ENCODER: vah264enc
       SUNSHINE_PASS: test
       SUNSHINE_USER: test
-      TZ: Asia/Novosibirsk
-      USER_PASSWORD: test
-      ENABLE_STEAM: 'true'
-      FORCE_X11_DUMMY_CONFIG: 'true'
-      ENABLE_SUNSHINE: 'true'
-      ENABLE_VNC_AUDIO: 'true'
-      STEAM_ARGS: '-silent'
-      ENABLE_STEAM: 'true'
-      ENABLE_EVDEV_INPUTS: 'true'
+      UID: '568'
+      USER_ID: '568'
       USER_LOCALES: en_US.UTF-8 UTF-8
-      WEB_UI_MODE: vnc #selkies
+      USER_PASSWORD: test
     extra_hosts:
       server101: 127.0.0.1
     group_add:
@@ -48,7 +39,8 @@ services:
     hostname: server101
     image: docker-box:latest
     ipc: host
-    network_mode: host # For Steam Remote Play working
+    network_mode: host
+    privileged: True
     restart: unless-stopped
     security_opt:
       - apparmor=unconfined
@@ -63,4 +55,4 @@ services:
       - /mnt/apps101/docker101/steamheadless/games:/mnt/games:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /tmp/pulse:/tmp/pulse:rw
-      - /dev/input/:/dev/input/:ro # Without it Steam Input does not work for some reason
+      - /dev/input/:/dev/input/:ro
