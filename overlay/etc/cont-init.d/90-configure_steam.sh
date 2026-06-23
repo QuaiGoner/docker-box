@@ -86,15 +86,8 @@ EOF
 )"
 
 if [ "${ENABLE_STEAM:-}" = "true" ]; then
-    if [ "${MODE}" == "s" ] || [ "${MODE}" == "secondary" ]; then
-        print_step_header "Enable Steam supervisor.d service"
-        sed -i 's|^autostart.*=.*$|autostart=true|' /etc/supervisor.d/steam.ini
-    else
-        print_step_header "Enable Steam auto-start script"
-        mkdir -p "${USER_HOME:?}/.config/autostart"
-        echo "${steam_autostart_desktop:?}" >"${USER_HOME:?}/.config/autostart/Steam.desktop"
-        sed -i 's|^autostart.*=.*$|autostart=false|' /etc/supervisor.d/steam.ini
-    fi
+    print_step_header "Enable Steam supervisor.d service"
+    sed -i 's|^autostart.*=.*$|autostart=true|' /etc/supervisor.d/steam.ini
 
     # Ensuring Steam Play is enabled for all titles
     CONFIG_VDF="${USER_HOME:?}/.steam/steam/config/config.vdf"
@@ -114,7 +107,7 @@ if [ "${ENABLE_STEAM:-}" = "true" ]; then
         mkdir -p "$(dirname "${LIBRARY_VDF}")"
         echo "${default_steam_library_config}" >"${LIBRARY_VDF}"
         chown -R "${USER:?}:${USER:?}" "${USER_HOME:?}/.steam"
-        # Only if we have mounted a /mnt/games path, then make the default games library for steam
+
         if [ -d "/mnt/games" ]; then
             mkdir -p "/mnt/games/GameLibrary/Steam/steamapps"
             chown "${USER:?}:${USER:?}" \
@@ -126,8 +119,9 @@ if [ "${ENABLE_STEAM:-}" = "true" ]; then
     else
         print_step_header "Steam library config already exists, skipping initialization"
     fi
+
 else
-    print_step_header "Disable Steam service"
+    print_step_header "Disable Steam supervisor.d service"
     sed -i 's|^autostart.*=.*$|autostart=false|' /etc/supervisor.d/steam.ini
 fi
 

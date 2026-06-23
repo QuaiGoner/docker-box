@@ -616,6 +616,30 @@ RUN SELKIES_VERSION="$(curl -fsSL "https://api.github.com/repos/selkies-project/
  && curl -fsSL "https://github.com/selkies-project/selkies/releases/download/v${SELKIES_VERSION}/selkies-gstreamer-portable-v${SELKIES_VERSION}_amd64.tar.gz" \
     | tar -xzf - -C /opt/selkies-gstreamer
 
+# Install WebUI
+RUN \
+    echo "**** Update apt database ****" \
+        && apt-get update \
+    && \
+    echo "**** Install Sunshine requirements ****" \
+        && apt-get install -y \
+            python3-psutil \
+			python3-flask \
+			python3-requests \
+			python3-aiohttp \
+			python3-jinja2 \
+			python3-aiohttp-jinja2 \
+    && \
+    echo "**** Section cleanup ****" \
+        && apt-get clean autoclean -y \
+        && apt-get autoremove -y \
+        && rm -rf \
+            /var/lib/apt/lists/* \
+            /var/tmp/* \
+            /tmp/* \
+    && \
+    echo
+
 # Add FS overlay
 COPY overlay /
 

@@ -175,25 +175,27 @@ function patch_nvidia_driver {
 }
 
 function install_deb_mesa {
-    if [ ! -f /tmp/init-mesa-libs-install.log ]; then
-        print_step_header "Enable i386 arch"
-        dpkg --add-architecture i386
-        if [ "${ENABLE_SID:-}" = "true" ]; then
-            print_step_header "Add Debian SID sources"
-            echo "deb http://deb.debian.org/debian/ sid main" >/etc/apt/sources.list
-        fi
-        apt-get update &>>/tmp/init-mesa-libs-install.log
-        print_step_header "Install mesa vulkan drivers"
-        echo "" >>/tmp/init-mesa-libs-install.log
-        apt-get install -y --no-install-recommends \
-            libvulkan1 \
-            libvulkan1:i386 \
-            mesa-vulkan-drivers \
-            mesa-vulkan-drivers:i386 \
-            mesa-utils \
-            mesa-utils-extra \
-            vulkan-tools \
-            &>>/tmp/init-mesa-libs-install.log
+    mkdir -p /home/tmp/
+    if [ ! -f /home/tmp/init-mesa-libs-install.log ]; then
+        # print_step_header "Enable i386 arch"
+        # dpkg --add-architecture i386
+        # if [ "${ENABLE_SID:-}" = "true" ]; then
+            # print_step_header "Add Debian SID sources"
+            # echo "deb http://deb.debian.org/debian/ sid main" >/etc/apt/sources.list
+        # fi
+        # apt-get update &>>/tmp/init-mesa-libs-install.log
+        # print_step_header "Install mesa vulkan drivers"
+        # echo "" >>/home/tmp/init-mesa-libs-install.log
+        # apt-get install -y --no-install-recommends \
+            # libvulkan1 \
+            # libvulkan1:i386 \
+            # mesa-vulkan-drivers \
+            # mesa-vulkan-drivers:i386 \
+            # mesa-utils \
+            # mesa-utils-extra \
+            # vulkan-tools \
+            # &>>/home/tmp/init-mesa-libs-install.log
+		print_step_header "Install mesa vulkan drivers"
     else
         print_step_header "Mesa has already been installed into this container"
     fi

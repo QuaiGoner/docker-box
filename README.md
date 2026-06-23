@@ -10,11 +10,12 @@ All credits to https://github.com/Steam-Headless/docker-steam-headless, these re
     - Mozilla (Flatpak)
 - Changes:
   - Applied tweak: Changed dummy config with edid.bin, only works for AMDGPU (thanks to https://github.com/Steam-Headless/docker-steam-headless/issues/168#issuecomment-2943219185)
-  - Added selkies
+  - Added selkies (optional)
+  - added webui (badly vibecoded)
 - Wants/Needs:
   - fix vaapi for steam remote play and selkies
   - investigate udev not working (linked to /dev/input:ro)
-  - disable root/desktop access and replace it with webui that will show supervisor statuses (selkies probably would help here)
+  - disable desktop, allow to install flathub and home directory from webui
   - make image immutable, get rid of startup scripts, bake in ENVS
   - move to wayland for zerocopy and for fun
 
