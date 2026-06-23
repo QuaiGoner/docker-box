@@ -1,14 +1,13 @@
 print_header "Configure Selkies WebRTC"
 
 # Optional: pick port (Selkies default is often 8080 or 8181 depending on build)
-DYNAMIC_PORT_SELKIES=32100
-export SELKIES_PORT=${SELKIES_PORT:-$DYNAMIC_PORT_SELKIES}
+export SELKIES_PORT=${SELKIES_PORT}
 
 print_step_header "Configure Selkies port '${SELKIES_PORT}'"
 
 if ([ "${MODE}" != "s" ] && [ "${MODE}" != "secondary" ]); then
 
-    if [ "${WEB_UI_MODE:-}" = "selkies" ]; then
+    if [ "${ENABLE_SELKIES:-}" = "true" ]; then
         print_step_header "Enable Selkies server"
 
         # Example supervisor file you must create:

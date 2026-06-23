@@ -177,6 +177,7 @@ function patch_nvidia_driver {
 function install_deb_mesa {
     mkdir -p /home/tmp/
     if [ ! -f /home/tmp/init-mesa-libs-install.log ]; then
+		print_step_header "Install mesa vulkan drivers"
         # print_step_header "Enable i386 arch"
         # dpkg --add-architecture i386
         # if [ "${ENABLE_SID:-}" = "true" ]; then
@@ -195,7 +196,6 @@ function install_deb_mesa {
             # mesa-utils-extra \
             # vulkan-tools \
             # &>>/home/tmp/init-mesa-libs-install.log
-		print_step_header "Install mesa vulkan drivers"
     else
         print_step_header "Mesa has already been installed into this container"
     fi

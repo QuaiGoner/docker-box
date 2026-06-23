@@ -266,11 +266,6 @@ RUN \
         && [ -f /usr/share/applications/thunar-bulk-rename.desktop ] && sed -i 's/^Categories=.*$/Categories=System;/' /usr/share/applications/thunar-bulk-rename.desktop || true \
         && [ -f /usr/share/applications/org.gnome.gedit.desktop ] && sed -i 's/^Categories=.*$/Categories=System;/' /usr/share/applications/org.gnome.gedit.desktop || true \
     && \
-    echo "**** Install WoL Manager requirements ****" \
-        && apt-get install -y \
-            tcpdump \
-            xprintidle \
-    && \
     echo "**** Section cleanup ****" \
         && apt-get clean autoclean -y \
         && apt-get autoremove -y \
@@ -517,7 +512,6 @@ RUN \
     && \
     echo "**** Install useful HW monitoring tools ****" \
         && apt-get install -y --no-install-recommends \
-            cpu-x \
             htop \
             vainfo \
             vdpauinfo \
@@ -663,18 +657,20 @@ ENV \
     ENABLE_SUNSHINE="true" \
     ENABLE_EVDEV_INPUTS="true" \
     ENABLE_WOL_POWER_MANAGER="false" \
-    ENABLE_SID="false"
+    ENABLE_SID="false" \
+    ENABLE_SELKIES="true"
 
 # Configure required ports
 ENV \
     PORT_NOVNC_WEB="31100" \
-	PORT_SELKIES="31101" \
+	SELKIES_PORT="31156" \
 	PORT_WEBUI="31289"
 	
 # Expose the required ports
 EXPOSE 31100
 EXPOSE 31101
 EXPOSE 31289
+EXPOSE 47990
 
 # Set entrypoint
 RUN chmod +x /entrypoint.sh

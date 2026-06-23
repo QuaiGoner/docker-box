@@ -1,27 +1,29 @@
-# Headless Steam Service
+# docker-box (name tbd)
 
 All credits to https://github.com/Steam-Headless/docker-steam-headless, these repo is my personal fork, with the goal to minimize internet requirements and move more to proton-based launching
-- Preinstalled:
-  - UMU (deb)
-  - Mesa Drivers (deb)
-  - Install flatpak on first run:
-	- ProtonUPQT (Flatpak)
-    - Protontricks (Flatpak)
-    - Mozilla (Flatpak)
+
 - Changes:
+	- Preinstalled:
+		- UMU (deb)
+		- Mesa Drivers (deb)
+		- Install flatpak on first run:
+			- ProtonUPQT (Flatpak)
+			- Protontricks (Flatpak)
+			- Mozilla (Flatpak)
   - Applied tweak: Changed dummy config with edid.bin, only works for AMDGPU (thanks to https://github.com/Steam-Headless/docker-steam-headless/issues/168#issuecomment-2943219185)
-  - Added selkies (optional)
+  - Added selkies
   - added webui (badly vibecoded)
+  - moved logs to stdout
+  - deleted neko and wol
 - Wants/Needs:
   - fix vaapi for steam remote play and selkies
   - investigate udev not working (linked to /dev/input:ro)
-  - disable desktop, allow to install flathub and home directory from webui
+  - disable desktop, allow to install flathub apps and access files in home directory from webui
   - make image immutable, get rid of startup scripts, bake in ENVS
   - move to wayland for zerocopy and for fun
+  - drop unnecessary priviliges, create small docker-compose examples
+  - delete novnc
 
-
-
-![](./images/banner.jpg)
 
 Remote Game Streaming Server.
 

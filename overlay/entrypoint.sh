@@ -86,7 +86,7 @@ touch /tmp/.first-run-user-init-scripts
 echo
 print_header "Starting supervisord";
 print_step_header "Logging all root services to '/var/log/supervisor/'"
-print_step_header "Logging all user services to '/home/${USER:?}/.cache/log/'"
+print_step_header "Logging all user services to stdout/stderr"
 echo
 mkdir -p /var/log/supervisor
 chmod a+rw /var/log/supervisor
