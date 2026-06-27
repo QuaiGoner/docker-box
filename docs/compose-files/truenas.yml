@@ -1,22 +1,16 @@
 services:
-  docker-box:
-    container_name: docker-box
-    image: docker-box:latest
+  steam-headless:
+    container_name: steam-headless
+    image: josh5/steam-headless:latest
     hostname: server101
     restart: unless-stopped
     network_mode: host
     ipc: host
-    privileged: true # For NVIDIA
-    runtime: nvidia # For NVIDIA
-    security_opt:
-      - apparmor=unconfined
-      - seccomp=unconfined
-    cap_add:
-      - NET_ADMIN
-      - SYS_ADMIN
-      - SYS_NICE
+    privileged: true
+#    runtime: nvidia # For NVIDIA
     device_cgroup_rules:
-      - c 13:* rwm
+      - 'c 10:* rmw'    # uinput
+      - 'c 13:* rmw'    # input (event devices
     group_add:
       - 44
       - 107
@@ -26,18 +20,18 @@ services:
       nofile:
         hard: 524288
         soft: 1024
-    devices:
-      - /dev/dri/:/dev/dri/ #For AMD
-      - /dev/fuse:/dev/fuse
-      - /dev/uinput:/dev/uinput
     environment:
-      FORCE_X11_DUMMY_CONFIG: 'true'
       GID: '568'
       GROUP_ID: '568'
       PGID: '568'
       PUID: '568'
       UID: '568'
       USER_ID: '568'
+      SUNSHINE_USER: 'test'
+      SUNSHINE_PASS: 'test'
+      USER_PASSWORD: 'test'
+      PORT_NOVNC_WEB: '31100'
+      TZ: Asia/Novosibirsk
     extra_hosts:
       server101: 127.0.0.1
     volumes:
@@ -45,9 +39,11 @@ services:
       - /mnt/apps101/docker101/steamheadless/games:/mnt/games:rw
       - /mnt/apps101/docker101/steamheadless/tmp/.X11-unix:/tmp/.X11-unix:rw
       - /mnt/apps101/docker101/steamheadless/tmp/pulse:/tmp/pulse:rw
+      - /dev/input/:/dev/input/:rw
+      - /run/udev:/run/udev:ro
       - /mnt/vault101/vault101/Games101/Emulation:/mnt/vault101/vault101/Games101/Emulation:rw
     deploy:
       resources:
         limits:
-          cpus: '3'
-          memory: 5096M
+          cpus: '2'
+          memory: 4096M
